@@ -1,0 +1,8 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1708907683
+default_bus_layout.tres::AudioBusLayout::904482961024180612::1708907667::0::1::::<><>::
+icon.png::CompressedTexture2D::5162964598332373158::1708907631::1708907685::1::::<><>::
+maldita.ogg::AudioStreamOggVorbis::6306464530244807072::1708907631::1708907666::1::::<><>::
+README.md::TextFile::-1::1708907631::0::1::::<><>::
+show_spectrum.gd::GDScript::-1::1708907682::0::1::::<>Node2D<>::
+show_spectrum.tscn::PackedScene::7008212716154807935::1708907683::0::1::::<><>::res://show_spectrum.gd<>uid://cv35sxexi0i0g::::res://maldita.ogg
