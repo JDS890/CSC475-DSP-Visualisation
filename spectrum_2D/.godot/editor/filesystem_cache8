@@ -1,8 +1,16 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1708907683
-default_bus_layout.tres::AudioBusLayout::904482961024180612::1708907667::0::1::::<><>::
-icon.png::CompressedTexture2D::5162964598332373158::1708907631::1708907685::1::::<><>::
-maldita.ogg::AudioStreamOggVorbis::6306464530244807072::1708907631::1708907666::1::::<><>::
-README.md::TextFile::-1::1708907631::0::1::::<><>::
-show_spectrum.gd::GDScript::-1::1708907682::0::1::::<>Node2D<>::
-show_spectrum.tscn::PackedScene::7008212716154807935::1708907683::0::1::::<><>::res://show_spectrum.gd<>uid://cv35sxexi0i0g::::res://maldita.ogg
+::res://::1710029914
+default_bus_layout.tres::AudioBusLayout::904482961024180612::1710029914::0::1::::<><>::
+icon.png::CompressedTexture2D::5162964598332373158::1710010968::1710010968::1::::<><>::
+README.md::TextFile::-1::1710010968::0::1::::<><>::
+show_spectrum.gd::GDScript::-1::1710028615::0::1::::<>Node2D<>::
+::res://Audio Samples/::1710011917
+maldita.ogg::AudioStreamOggVorbis::6306464530244807072::1710010968::1710011917::1::::<><>::
+::res://Scenes/::1710028615
+show_spectrum.tscn::PackedScene::7008212716154807935::1710013799::0::1::::<><>::res://show_spectrum.gd<>uid://cv35sxexi0i0g::::res://Audio Samples/maldita.ogg
+UI_scene.tscn::PackedScene::6839158753736719110::1710028615::0::1::::<><>::uid://yf33lwb2ua2q::::res://Temp Dev Stuff/mock_spectro.jpg
+::res://Scripts/::1710011960
+::res://Temp Dev Stuff/::1710030458
+mock_spectro.jpg::CompressedTexture2D::1696604825934726422::1710012642::1710012642::1::::<><>::
+mock_spectro.png::CompressedTexture2D::5863865345654953807::1710030458::1710030462::1::::<><>::
+mock_spectro_alpha.jpg::CompressedTexture2D::3945572306656159669::1710030196::1710030199::1::::<><>::
