@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4o67e7m3gdh3"]
+[gd_scene load_steps=3 format=3 uid="uid://c4o67e7m3gdh3"]
 
 [ext_resource type="Texture2D" uid="uid://yf33lwb2ua2q" path="res://Temp Dev Stuff/mock_spectro.jpg" id="1_5jl3g"]
+[ext_resource type="Texture2D" uid="uid://cpsragnatfm5l" path="res://Temp Dev Stuff/mock_spectro.png" id="2_prri6"]
 
 [node name="UICanvas" type="Control"]
 layout_mode = 3
@@ -19,6 +20,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0313726, 0.121569, 0.258824, 1)
 
+[node name="BaseSpectro" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -163.0
+offset_right = 300.0
+offset_bottom = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5jl3g")
+
 [node name="VoiceSpectro" type="TextureRect" parent="."]
 modulate = Color(0.32549, 1, 1, 1)
 layout_mode = 1
@@ -33,22 +49,7 @@ offset_right = 300.0
 offset_bottom = 162.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_5jl3g")
-
-[node name="BaseSpectro" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -162.0
-offset_right = 300.0
-offset_bottom = 162.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_5jl3g")
+texture = ExtResource("2_prri6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
