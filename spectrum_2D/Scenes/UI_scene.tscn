@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4o67e7m3gdh3"]
 
 [ext_resource type="Script" path="res://Scripts/UI_scene.gd" id="1_4u84t"]
-[ext_resource type="Texture2D" uid="uid://yf33lwb2ua2q" path="res://Temp Dev Stuff/mock_spectro.jpg" id="1_5jl3g"]
-[ext_resource type="Texture2D" uid="uid://cpsragnatfm5l" path="res://Temp Dev Stuff/mock_spectro.png" id="2_prri6"]
+[ext_resource type="Texture2D" uid="uid://cn0ydapvaghej" path="res://Temp Dev Stuff/mock_spectro.jpg" id="1_5jl3g"]
+[ext_resource type="Texture2D" uid="uid://cdpamww1urw1v" path="res://Temp Dev Stuff/mock_spectro.png" id="2_prri6"]
 [ext_resource type="Theme" uid="uid://bewn6sinpr4as" path="res://Temp Dev Stuff/KenneyUI/kenneyUI-blue.tres" id="3_bb74r"]
 
 [node name="UICanvas" type="Control"]
@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4u84t")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="BGColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,160 +23,261 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0313726, 0.121569, 0.258824, 1)
 
-[node name="BaseSpectro" type="TextureRect" parent="."]
-layout_mode = 1
-offset_left = 355.0
-offset_top = 244.0
-offset_right = 955.0
-offset_bottom = 568.0
-texture = ExtResource("1_5jl3g")
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 645.0
 
-[node name="VoiceSpectro" type="TextureRect" parent="."]
-modulate = Color(0.32549, 1, 1, 1)
-layout_mode = 1
-offset_left = 352.0
-offset_top = 212.0
-offset_right = 952.0
-offset_bottom = 536.0
-texture = ExtResource("2_prri6")
-
-[node name="PianoSpectro" type="TextureRect" parent="."]
-modulate = Color(0.87451, 0, 0.258824, 1)
-layout_mode = 1
-offset_left = 352.0
-offset_top = 169.0
-offset_right = 952.0
-offset_bottom = 493.0
-texture = ExtResource("2_prri6")
-
-[node name="OtherSpectro" type="TextureRect" parent="."]
-modulate = Color(0.14902, 0, 1, 1)
-layout_mode = 1
-offset_left = 355.0
-offset_top = 135.0
-offset_right = 955.0
-offset_bottom = 459.0
-texture = ExtResource("2_prri6")
-
-[node name="DrumSpectro" type="TextureRect" parent="."]
-modulate = Color(0.262745, 0.658824, 0, 1)
-layout_mode = 1
-offset_left = 351.0
-offset_top = 98.0
-offset_right = 951.0
-offset_bottom = 422.0
-texture = ExtResource("2_prri6")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 17.0
-offset_top = 17.0
-offset_right = 234.0
-offset_bottom = 628.0
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(217, 611)
+layout_mode = 2
 alignment = 1
 
-[node name="VocalStemPanel" type="Panel" parent="VBoxContainer"]
+[node name="VocalStemPanel" type="Panel" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 theme = ExtResource("3_bb74r")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VocalStemPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VocalStemPanel"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 9.0
 offset_right = 206.0
 offset_bottom = 74.0
 
-[node name="Label" type="Label" parent="VBoxContainer/VocalStemPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VocalStemPanel/VBoxContainer"]
 layout_mode = 2
 text = "Stem 1"
 horizontal_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/VocalStemPanel/VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer/VocalStemPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_bb74r")
 
-[node name="PianoStemPanel" type="Panel" parent="VBoxContainer"]
+[node name="PianoStemPanel" type="Panel" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 theme = ExtResource("3_bb74r")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PianoStemPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/PianoStemPanel"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 9.0
 offset_right = 206.0
 offset_bottom = 74.0
 
-[node name="Label" type="Label" parent="VBoxContainer/PianoStemPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/PianoStemPanel/VBoxContainer"]
 layout_mode = 2
 text = "Stem 1"
 horizontal_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/PianoStemPanel/VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer/PianoStemPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_bb74r")
 
-[node name="DrumStemPanel" type="Panel" parent="VBoxContainer"]
+[node name="DrumStemPanel" type="Panel" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 theme = ExtResource("3_bb74r")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DrumStemPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/DrumStemPanel"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 9.0
 offset_right = 206.0
 offset_bottom = 74.0
 
-[node name="Label" type="Label" parent="VBoxContainer/DrumStemPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/DrumStemPanel/VBoxContainer"]
 layout_mode = 2
 text = "Stem 1"
 horizontal_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/DrumStemPanel/VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer/DrumStemPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_bb74r")
 
-[node name="BaseStemPanel" type="Panel" parent="VBoxContainer"]
+[node name="BaseStemPanel" type="Panel" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 theme = ExtResource("3_bb74r")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/BaseStemPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/BaseStemPanel"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 9.0
 offset_right = 206.0
 offset_bottom = 74.0
 
-[node name="Label" type="Label" parent="VBoxContainer/BaseStemPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/BaseStemPanel/VBoxContainer"]
 layout_mode = 2
 text = "Stem 1"
 horizontal_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/BaseStemPanel/VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer/BaseStemPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_bb74r")
 
-[node name="OtherStemPanel" type="Panel" parent="VBoxContainer"]
+[node name="OtherStemPanel" type="Panel" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 theme = ExtResource("3_bb74r")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/OtherStemPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/OtherStemPanel"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 9.0
 offset_right = 206.0
 offset_bottom = 74.0
 
-[node name="Label" type="Label" parent="VBoxContainer/OtherStemPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/OtherStemPanel/VBoxContainer"]
 layout_mode = 2
 text = "Stem 1"
 horizontal_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer/OtherStemPanel/VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer/OtherStemPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bb74r")
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_bb74r")
+
+[node name="BaseSpectro" type="TextureRect" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("1_5jl3g")
+stretch_mode = 3
+
+[node name="VoiceSpectro" type="TextureRect" parent="HBoxContainer/PanelContainer"]
+modulate = Color(0.32549, 1, 1, 1)
+layout_mode = 2
+texture = ExtResource("2_prri6")
+stretch_mode = 3
+
+[node name="PianoSpectro" type="TextureRect" parent="HBoxContainer/PanelContainer"]
+modulate = Color(0.87451, 0, 0.258824, 1)
+layout_mode = 2
+texture = ExtResource("2_prri6")
+stretch_mode = 3
+
+[node name="OtherSpectro" type="TextureRect" parent="HBoxContainer/PanelContainer"]
+modulate = Color(0.14902, 0, 1, 1)
+layout_mode = 2
+texture = ExtResource("2_prri6")
+stretch_mode = 3
+
+[node name="DrumSpectro" type="TextureRect" parent="HBoxContainer/PanelContainer"]
+modulate = Color(0.262745, 0.658824, 0, 1)
+layout_mode = 2
+texture = ExtResource("2_prri6")
+stretch_mode = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(217, 611)
+layout_mode = 2
+alignment = 1
+
+[node name="VocalStemPanel" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme = ExtResource("3_bb74r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/VocalStemPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 206.0
+offset_bottom = 74.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/VocalStemPanel/VBoxContainer"]
+layout_mode = 2
+text = "Stem 1"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer2/VocalStemPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bb74r")
+
+[node name="PianoStemPanel" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme = ExtResource("3_bb74r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/PianoStemPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 206.0
+offset_bottom = 74.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/PianoStemPanel/VBoxContainer"]
+layout_mode = 2
+text = "Stem 1"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer2/PianoStemPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bb74r")
+
+[node name="DrumStemPanel" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme = ExtResource("3_bb74r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/DrumStemPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 206.0
+offset_bottom = 74.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/DrumStemPanel/VBoxContainer"]
+layout_mode = 2
+text = "Stem 1"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer2/DrumStemPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bb74r")
+
+[node name="BaseStemPanel" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme = ExtResource("3_bb74r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/BaseStemPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 206.0
+offset_bottom = 74.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/BaseStemPanel/VBoxContainer"]
+layout_mode = 2
+text = "Stem 1"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer2/BaseStemPanel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_bb74r")
+
+[node name="OtherStemPanel" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+theme = ExtResource("3_bb74r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/OtherStemPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 206.0
+offset_bottom = 74.0
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/OtherStemPanel/VBoxContainer"]
+layout_mode = 2
+text = "Stem 1"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer2/OtherStemPanel/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_bb74r")
