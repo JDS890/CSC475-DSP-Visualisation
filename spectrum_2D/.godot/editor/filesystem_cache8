@@ -1,16 +1,24 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1710264685
-default_bus_layout.tres::AudioBusLayout::904482961024180612::1710261061::0::1::::<><>::
+::res://::1710619687
+default_bus_layout.tres::AudioBusLayout::904482961024180612::1710372807::0::1::::<><>::
 icon.png::CompressedTexture2D::5162964598332373158::1710014568::1710014568::1::::<><>::
 README.md::TextFile::-1::1710014568::0::1::::<><>::
 ::res://Audio Samples/::1710015517
 maldita.ogg::AudioStreamOggVorbis::6306464530244807072::1710014568::1710015517::1::::<><>::
-::res://Scenes/::1710261966
-show_spectrum.tscn::PackedScene::7008212716154807935::1710261942::0::1::::<><>::res://Scripts/show_spectrum.gd<>uid://cv35sxexi0i0g::::res://Audio Samples/maldita.ogg
-UI_scene.tscn::PackedScene::6839158753736719110::1710261966::0::1::::<><>::uid://yf33lwb2ua2q::::res://Temp Dev Stuff/mock_spectro.jpg<>uid://cpsragnatfm5l::::res://Temp Dev Stuff/mock_spectro.png
+::res://Scenes/::1710373940
+show_spectrum.tscn::PackedScene::7008212716154807935::1710373940::0::1::::<><>::res://Scripts/show_spectrum.gd<>uid://cv35sxexi0i0g::::res://Audio Samples/maldita.ogg
+UI_scene.tscn::PackedScene::6839158753736719110::1710373940::0::1::::<><>::uid://yf33lwb2ua2q::::res://Temp Dev Stuff/mock_spectro.jpg<>uid://cpsragnatfm5l::::res://Temp Dev Stuff/mock_spectro.png<>uid://bwhi88l2ms174::::res://Temp Dev Stuff/mock_spectro_alpha.jpg<>uid://bewn6sinpr4as::::res://Temp Dev Stuff/KenneyUI/kenneyUI-blue.tres<>uid://cfs8jje5saixy::::res://icon.png
 ::res://Scripts/::1710261942
 show_spectrum.gd::GDScript::-1::1710261073::0::1::::<>Node2D<>::
-::res://Temp Dev Stuff/::1710034062
+::res://Temp Dev Stuff/::1710372840
 mock_spectro.jpg::CompressedTexture2D::1696604825934726422::1710016242::1710016242::1::::<><>::
 mock_spectro.png::CompressedTexture2D::5863865345654953807::1710034058::1710034062::1::::<><>::
 mock_spectro_alpha.jpg::CompressedTexture2D::3945572306656159669::1710033796::1710033799::1::::<><>::
+::res://Temp Dev Stuff/KenneyUI/::1710373713
+kenneyUI-blue.tres::Theme::2713438007741706654::1710373713::0::1::::<><>::uid://dm5ijtgwylj::::res://Temp Dev Stuff/KenneyUI/UIpack_vector.svg<>uid://djowvbua15juk::::res://Temp Dev Stuff/KenneyUI/kenvector_future.ttf
+kenneyUI-green.tres::Theme::2327863848088381042::1710373342::0::1::::<><>::uid://dm5ijtgwylj::::res://Temp Dev Stuff/KenneyUI/UIpack_vector.svg<>uid://djowvbua15juk::::res://Temp Dev Stuff/KenneyUI/kenvector_future.ttf
+kenneyUI-red.tres::Theme::-1::1710372935::0::1::::<><>::
+kenneyUI-yellow.tres::Theme::8321017717612727196::1710373713::0::1::::<><>::uid://dm5ijtgwylj::::res://Temp Dev Stuff/KenneyUI/UIpack_vector.svg<>uid://djowvbua15juk::::res://Temp Dev Stuff/KenneyUI/kenvector_future.ttf
+kenneyUI.tres::Theme::-1::1710372935::0::1::::<><>::
+kenvector_future.ttf::FontFile::7821236291346669926::1710372935::1710372951::1::::<><>::
+UIpack_vector.svg::CompressedTexture2D::6975745954748559::1710372935::1710372951::1::::<><>::
