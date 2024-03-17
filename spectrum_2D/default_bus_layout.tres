@@ -1,8 +1,85 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://m5ex41d2q5lg"]
+[gd_resource type="AudioBusLayout" load_steps=9 format=3 uid="uid://m5ex41d2q5lg"]
 
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="1"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_5jndh"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_eueim"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_mobud"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_ytc1d"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_goulv"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_0rdk4"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_cq3iu"]
 resource_name = "SpectrumAnalyzer"
 
 [resource]
 bus/0/effect/0/effect = SubResource("1")
 bus/0/effect/0/enabled = true
+bus/1/name = &"Fusion Bus"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_5jndh")
+bus/1/effect/0/enabled = true
+bus/2/name = &"Vocal Bus"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Fusion Bus"
+bus/2/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_eueim")
+bus/2/effect/0/enabled = true
+bus/3/name = &"Drum Bus"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Fusion Bus"
+bus/3/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_mobud")
+bus/3/effect/0/enabled = true
+bus/4/name = &"Other Bus"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Fusion Bus"
+bus/4/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_ytc1d")
+bus/4/effect/0/enabled = true
+bus/5/name = &"Piano Bus"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = &"Fusion Bus"
+bus/5/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_goulv")
+bus/5/effect/0/enabled = true
+bus/6/name = &"Bass Bus"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"Fusion Bus"
+bus/6/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_0rdk4")
+bus/6/effect/0/enabled = true
+bus/7/name = &"Original Bus"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = 0.0
+bus/7/send = &"Master"
+bus/7/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_cq3iu")
+bus/7/effect/0/enabled = true

@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://c633ie5gm1vgp"]
+
+[ext_resource type="Script" path="res://Scripts/show_spectrum.gd" id="1_81mf2"]
+[ext_resource type="AudioStream" uid="uid://dn0gv524pk1q5" path="res://Audio Samples/Like a Shadow/Like a Shadow.mp3" id="2_qbfwq"]
+[ext_resource type="AudioStream" uid="uid://dxmcykrb6ye03" path="res://Audio Samples/Like a Shadow/Like a Shadow - Vocal.mp3" id="3_8jh0c"]
+[ext_resource type="Script" path="res://Scenes/vocal_stream.gd" id="3_rlcoi"]
+[ext_resource type="AudioStream" uid="uid://dlhguiyrn2ior" path="res://Audio Samples/Like a Shadow/Like a Shadow - Other.mp3" id="4_7xxb1"]
+[ext_resource type="Script" path="res://Scenes/other_stream.gd" id="5_m6osn"]
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_w5b0w"]
+polyphony = 5
+
+[node name="ShowSpectrum" type="Node2D"]
+script = ExtResource("1_81mf2")
+
+[node name="Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qbfwq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPolyphonic_w5b0w")
+
+[node name="VocalStream" type="Node2D" parent="."]
+script = ExtResource("3_rlcoi")
+
+[node name="VocalStream" type="AudioStreamPlayer" parent="VocalStream"]
+stream = ExtResource("3_8jh0c")
+bus = &"New Bus"
+
+[node name="OtherStream" type="Node2D" parent="."]
+script = ExtResource("5_m6osn")
+
+[node name="OtherStream" type="AudioStreamPlayer" parent="OtherStream"]
+stream = ExtResource("4_7xxb1")
+bus = &"New Bus 2"

@@ -1,11 +1,85 @@
-[gd_scene load_steps=3 format=3 uid="uid://c633ie5gm1vgp"]
+[gd_scene load_steps=16 format=3 uid="uid://c633ie5gm1vgp"]
 
 [ext_resource type="Script" path="res://Scripts/show_spectrum.gd" id="1_81mf2"]
-[ext_resource type="AudioStream" uid="uid://cv35sxexi0i0g" path="res://Audio Samples/maldita.ogg" id="2_x1acf"]
+[ext_resource type="AudioStream" uid="uid://dn0gv524pk1q5" path="res://Audio Samples/Like a Shadow/Like a Shadow.mp3" id="2_qbfwq"]
+[ext_resource type="AudioStream" uid="uid://dxmcykrb6ye03" path="res://Audio Samples/Like a Shadow/Like a Shadow - Vocal.mp3" id="3_8jh0c"]
+[ext_resource type="Script" path="res://Scenes/fusion_stream.gd" id="3_543t7"]
+[ext_resource type="Script" path="res://Scripts/vocal_stream.gd" id="3_rlcoi"]
+[ext_resource type="AudioStream" uid="uid://dlhguiyrn2ior" path="res://Audio Samples/Like a Shadow/Like a Shadow - Other.mp3" id="4_7xxb1"]
+[ext_resource type="Script" path="res://Scenes/drum_stream.gd" id="5_hlw3r"]
+[ext_resource type="Script" path="res://Scripts/other_stream.gd" id="5_m6osn"]
+[ext_resource type="AudioStream" uid="uid://coows35rg247x" path="res://Audio Samples/Like a Shadow/Like a Shadow - Drum.mp3" id="6_bysay"]
+[ext_resource type="Script" path="res://Scenes/piano_stream.gd" id="10_el4vf"]
+[ext_resource type="Script" path="res://Scenes/bass_stream.gd" id="11_2rxrp"]
+[ext_resource type="AudioStream" uid="uid://de2h6et8io30h" path="res://Audio Samples/Like a Shadow/Like a Shadow - Piano.mp3" id="11_bqsly"]
+[ext_resource type="Script" path="res://Scenes/original_stream.gd" id="12_f4mfl"]
+[ext_resource type="AudioStream" uid="uid://fnxx8w532poo" path="res://Audio Samples/Like a Shadow/Like a Shadow - Bass.mp3" id="13_03ej4"]
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_w5b0w"]
+polyphony = 5
 
 [node name="ShowSpectrum" type="Node2D"]
 script = ExtResource("1_81mf2")
 
 [node name="Player" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_x1acf")
+stream = ExtResource("2_qbfwq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPolyphonic_w5b0w")
 autoplay = true
+
+[node name="FusionStream" type="Node2D" parent="."]
+script = ExtResource("3_543t7")
+
+[node name="FusionStream" type="AudioStreamPlayer" parent="FusionStream"]
+stream = ExtResource("3_8jh0c")
+autoplay = true
+bus = &"Vocal Bus"
+
+[node name="VocalStream" type="Node2D" parent="."]
+script = ExtResource("3_rlcoi")
+
+[node name="VocalStream" type="AudioStreamPlayer" parent="VocalStream"]
+stream = ExtResource("3_8jh0c")
+autoplay = true
+bus = &"Vocal Bus"
+
+[node name="DrumStream" type="Node2D" parent="."]
+script = ExtResource("5_hlw3r")
+
+[node name="DrumStream" type="AudioStreamPlayer" parent="DrumStream"]
+stream = ExtResource("6_bysay")
+autoplay = true
+bus = &"Drum Bus"
+
+[node name="OtherStream" type="Node2D" parent="."]
+script = ExtResource("5_m6osn")
+
+[node name="OtherStream" type="AudioStreamPlayer" parent="OtherStream"]
+stream = ExtResource("4_7xxb1")
+autoplay = true
+bus = &"Other Bus"
+
+[node name="PianoStream" type="Node2D" parent="."]
+script = ExtResource("10_el4vf")
+
+[node name="PianoStream" type="AudioStreamPlayer" parent="PianoStream"]
+stream = ExtResource("11_bqsly")
+autoplay = true
+bus = &"Vocal Bus"
+
+[node name="BassStream" type="Node2D" parent="."]
+script = ExtResource("11_2rxrp")
+
+[node name="BassStream" type="AudioStreamPlayer" parent="BassStream"]
+stream = ExtResource("13_03ej4")
+autoplay = true
+bus = &"Vocal Bus"
+
+[node name="OriginalStream" type="Node2D" parent="."]
+script = ExtResource("12_f4mfl")
+
+[node name="OriginalStream" type="AudioStreamPlayer" parent="OriginalStream"]
+stream = ExtResource("2_qbfwq")
+autoplay = true
+bus = &"Vocal Bus"
