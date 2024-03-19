@@ -1,8 +1,9 @@
 extends Node
 
 # Stream constants
-const VU_COUNT = 16
-const FREQ_MAX = 11050.0 * 10
+var vu_count = 16
+const FREQ_MIN = 500
+const FREQ_MAX = 11050.0
 const WIDTH = 400
 const HEIGHT = 100
 const MIN_DB = 60

@@ -6,7 +6,7 @@ resource_name = "SpectrumAnalyzer"
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_5jndh"]
 resource_name = "SpectrumAnalyzer"
 
-[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_eueim"]
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_0rdk4"]
 resource_name = "SpectrumAnalyzer"
 
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_mobud"]
@@ -18,7 +18,7 @@ resource_name = "SpectrumAnalyzer"
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_goulv"]
 resource_name = "SpectrumAnalyzer"
 
-[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_0rdk4"]
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_eueim"]
 resource_name = "SpectrumAnalyzer"
 
 [sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_cq3iu"]
@@ -35,13 +35,13 @@ bus/1/volume_db = 0.0
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_5jndh")
 bus/1/effect/0/enabled = true
-bus/2/name = &"Vocal Bus"
+bus/2/name = &"Bass Bus"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Fusion Bus"
-bus/2/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_eueim")
+bus/2/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_0rdk4")
 bus/2/effect/0/enabled = true
 bus/3/name = &"Drum Bus"
 bus/3/solo = false
@@ -67,13 +67,13 @@ bus/5/volume_db = 0.0
 bus/5/send = &"Fusion Bus"
 bus/5/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_goulv")
 bus/5/effect/0/enabled = true
-bus/6/name = &"Bass Bus"
+bus/6/name = &"Vocal Bus"
 bus/6/solo = false
 bus/6/mute = false
 bus/6/bypass_fx = false
 bus/6/volume_db = 0.0
 bus/6/send = &"Fusion Bus"
-bus/6/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_0rdk4")
+bus/6/effect/0/effect = SubResource("AudioEffectSpectrumAnalyzer_eueim")
 bus/6/effect/0/enabled = true
 bus/7/name = &"Original Bus"
 bus/7/solo = false

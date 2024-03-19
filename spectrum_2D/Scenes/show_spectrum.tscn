@@ -82,4 +82,4 @@ script = ExtResource("12_f4mfl")
 [node name="OriginalStream" type="AudioStreamPlayer" parent="OriginalStream"]
 stream = ExtResource("2_qbfwq")
 autoplay = true
-bus = &"Vocal Bus"
+bus = &"Original Bus"
