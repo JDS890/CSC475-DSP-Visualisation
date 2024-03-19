@@ -27,8 +27,8 @@ These are in order of priority for the first milestone, split into the different
 - [X] Look into making number of bins a global variable (can we change it on the fly and do we want to?)
 - [ ] Double check weird sounds happening after music is over
 - [ ] Add some stems from the GTZAN database
-- [ ] Add a FREQ_MIN value
-- [ ] Make the number of bins a variable not a constant
+- [X] Add a FREQ_MIN value
+- [X] Make the number of bins a variable not a constant
 - [X] Signals between music players and script
   - [X] Work with the UI to mute stems
 - ~~[ ] Add buses that combine the stems for display~~
