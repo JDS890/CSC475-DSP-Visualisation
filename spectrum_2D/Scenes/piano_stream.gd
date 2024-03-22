@@ -4,6 +4,11 @@ extends Node2D
 var spectrum
 
 func _ready():
+	$PianoStream.stream = load(Global.res_path + "/" +
+							  Global.songname + "/" +
+							  Global.songname + " - Piano.mp3")
+	$PianoStream.play()
+
 	spectrum = AudioServer.get_bus_effect_instance(
 		AudioServer.get_bus_index("Piano Bus"),
 		0
@@ -23,5 +28,5 @@ func _draw():
 		var magnitude: float = spectrum.get_magnitude_for_frequency_range(prev_hz, hz).length()
 		var energy = clamp((Global.MIN_DB + linear_to_db(magnitude)) / Global.MIN_DB, 0, 1)
 		var height = energy * Global.HEIGHT
-		draw_rect(Rect2(w * i + 100, Global.HEIGHT - height, w, height), Global.STREAM_COLORS[3])
+		draw_rect(Rect2(w * i + 450, Global.HEIGHT - height + 150, w, height), Global.STREAM_COLORS[3])
 		prev_hz = hz

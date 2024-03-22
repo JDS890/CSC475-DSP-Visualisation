@@ -1,9 +1,15 @@
 extends Node2D
 
-#var vocal
+var audiostream
 var spectrum
 
 func _ready():
+	#audiostream = get_node("BassStream")
+	$BassStream.stream = load(Global.res_path + "/" +
+							  Global.songname + "/" +
+							  Global.songname + " - Bass.mp3")
+	$BassStream.play()
+
 	spectrum = AudioServer.get_bus_effect_instance(
 		AudioServer.get_bus_index("Bass Bus"),
 		0
@@ -22,5 +28,5 @@ func _draw():
 		var magnitude: float = spectrum.get_magnitude_for_frequency_range(prev_hz, hz).length()
 		var energy = clamp((Global.MIN_DB + linear_to_db(magnitude)) / Global.MIN_DB, 0, 1)
 		var height = energy * Global.HEIGHT
-		draw_rect(Rect2(w * i + 400, Global.HEIGHT - height + 150, w, height), Global.STREAM_COLORS[0])
+		draw_rect(Rect2(w * i + 450, Global.HEIGHT - height + 300, w, height), Global.STREAM_COLORS[0])
 		prev_hz = hz

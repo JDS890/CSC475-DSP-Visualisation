@@ -1,8 +1,15 @@
 extends Node2D
 
+var audiostream
 var spectrum
 
 func _ready():
+	#audiostream = get_node("OtherStream")
+	$OtherStream.stream = load(Global.res_path + "/" +
+							  Global.songname + "/" +
+							  Global.songname + " - Other.mp3")
+	$OtherStream.play()
+
 	spectrum = AudioServer.get_bus_effect_instance(
 		AudioServer.get_bus_index("Other Bus"),
 		0

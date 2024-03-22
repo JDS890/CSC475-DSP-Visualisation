@@ -4,6 +4,13 @@ extends Node2D
 var spectrum
 
 func _ready():
+	$OriginalStream.stream = load(Global.res_path + "/" +
+							  Global.songname + "/" +
+							  Global.songname + ".mp3")
+	# Don't play for now because it's causing some
+	# weird sounds when played with all the other stems
+	#$OriginalStream.play()
+
 	spectrum = AudioServer.get_bus_effect_instance(
 		AudioServer.get_bus_index("Original Bus"),
 		0
@@ -22,5 +29,5 @@ func _draw():
 		var magnitude: float = spectrum.get_magnitude_for_frequency_range(prev_hz, hz).length()
 		var energy = clamp((Global.MIN_DB + linear_to_db(magnitude)) / Global.MIN_DB, 0, 1)
 		var height = energy * Global.HEIGHT
-		draw_rect(Rect2(w * i + 500, Global.HEIGHT - height, w, height), Color.AQUAMARINE)
+		draw_rect(Rect2(w * i + 450, Global.HEIGHT - height, w, height), Color.AQUAMARINE)
 		prev_hz = hz

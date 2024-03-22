@@ -4,6 +4,11 @@ var spectrum
 var polyStreamPlayer
 
 func _ready():
+	$DrumStream.stream = load(Global.res_path + "/" +
+							  Global.songname + "/" +
+							  Global.songname + " - Drum.mp3")
+	$DrumStream.play()
+	
 	spectrum = AudioServer.get_bus_effect_instance(
 		AudioServer.get_bus_index("Drum Bus"),
 		0
