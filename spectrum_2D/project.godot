@@ -12,13 +12,13 @@ config_version=5
 
 config/name="Audio Spectrum Demo"
 config/description="This used to be \"This is a demo showing how a spectrum analyzer can be built using Godot.\", but now I'm messing with it."
-run/main_scene="res://Scenes/show_spectrum.tscn"
+run/main_scene="res://Scenes/2D_spectrogram_demo.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://Scripts/global.gd"
 
 [display]
 

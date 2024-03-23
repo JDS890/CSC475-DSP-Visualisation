@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4o67e7m3gdh3"]
 
 [ext_resource type="Script" path="res://Scripts/UI_scene.gd" id="1_4u84t"]
-[ext_resource type="Texture2D" uid="uid://gulppvwrwfvv" path="res://Temp Dev Stuff/mock_spectro.jpg" id="1_5jl3g"]
-[ext_resource type="Texture2D" uid="uid://o83ty4dpb70x" path="res://Temp Dev Stuff/mock_spectro.png" id="2_prri6"]
+[ext_resource type="Texture2D" uid="uid://cn0ydapvaghej" path="res://Temp Dev Stuff/mock_spectro.jpg" id="1_5jl3g"]
+[ext_resource type="Texture2D" uid="uid://cdpamww1urw1v" path="res://Temp Dev Stuff/mock_spectro.png" id="2_prri6"]
 [ext_resource type="Theme" uid="uid://bewn6sinpr4as" path="res://Temp Dev Stuff/KenneyUI/kenneyUI-blue.tres" id="3_bb74r"]
 
 [node name="UICanvas" type="Control"]
