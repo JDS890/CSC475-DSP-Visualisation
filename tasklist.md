@@ -25,8 +25,9 @@ These are in order of priority for the first milestone, split into the different
 - [X] Play music stems in music player nodes
 - [X] Multiple players at the same time, is it possible? Otherwise, some shenanigans will be required
 - [X] Look into making number of bins a global variable (can we change it on the fly and do we want to?)
-- [ ] Double check weird sounds happening after music is over
-- [ ] Add some stems from the GTZAN database
+- [X] Double check weird sounds happening after music is over
+  - Songs are not played for that long so it's fine, but there is an extra amount added to the end by the splitter 
+- ~~[ ] Add some stems from the GTZAN database~~ Added some from other places
 - [X] Add a FREQ_MIN value
 - [X] Make the number of bins a variable not a constant
 - [X] Signals between music players and script
@@ -34,7 +35,8 @@ These are in order of priority for the first milestone, split into the different
 - ~~[ ] Add buses that combine the stems for display~~
   - ~~Front bus will have one stem~~
   - ~~Second stem will have first bus and another stem, etc.~~
-- [ ] Functions with parameters (num secs, freq bins / num bins)
+- [X] Functions with parameters (num secs, freq bins / num bins)
+  - Added as global variables 
 - [X] Maybe analyze the demo code and refactor for more meaningful
 
 *Bonus:*
