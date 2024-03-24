@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://w0mk7gkqnb75"]
+
+[ext_resource type="Script" path="res://Scripts/menu_scene.gd" id="1_ney6v"]
+[ext_resource type="Texture2D" uid="uid://g6yy7houogh1" path="res://Temp Dev Stuff/temp_demo_logo.png" id="1_unjk5"]
+[ext_resource type="Texture2D" uid="uid://cx2a2y084hyvh" path="res://Temp Dev Stuff/folder icon.png" id="3_iyos3"]
+
+[node name="MenuScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ney6v")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+mode = 2
+title = "Open a Directory"
+size = Vector2i(452, 159)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+root_subfolder = "\"Audio Samples\""
+
+[node name="LoGo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -244.5
+offset_right = 244.5
+offset_bottom = 219.0
+grow_horizontal = 2
+texture = ExtResource("1_unjk5")
+
+[node name="SelectLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.5
+offset_top = -95.0
+offset_right = 165.5
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select the folder holding your audio stems:"
+
+[node name="DirPathLabel" type="Label" parent="."]
+modulate = Color(0.556863, 0.701961, 1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -61.0
+offset_right = 88.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "none/none/none/none"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 252.0
+offset_right = 720.0
+offset_bottom = 296.0
+icon = ExtResource("3_iyos3")
+
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_file_dialog_dir_selected"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
