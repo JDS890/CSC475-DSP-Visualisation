@@ -19,15 +19,11 @@ visible = false
 
 [node name="S1" parent="." instance=ExtResource("3_2mdqd")]
 
-[node name="S2" parent="." instance=ExtResource("3_2mdqd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="S3" parent="." instance=ExtResource("3_2mdqd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-
-[node name="S4" parent="." instance=ExtResource("3_2mdqd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("SphereMesh_oqv72")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, -0.025, 50)
+projection = 1
+size = 72.833

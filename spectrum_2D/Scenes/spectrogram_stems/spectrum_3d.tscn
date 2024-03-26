@@ -1,13 +1,18 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmwx3pasdfry"]
 
-[ext_resource type="PackedScene" uid="uid://bubibdc6g2b8h" path="res://Scenes/spectrogram_stems/spectrum.glb" id="1_tqhrk"]
+[ext_resource type="PackedScene" uid="uid://cm7rdy437csn" path="res://Scenes/spectrogram_stems/spectrum.glb" id="1_tqhrk"]
 [ext_resource type="Shader" path="res://Shaders/spectrogram_stem.gdshader" id="2_ol03x"]
 [ext_resource type="Script" path="res://Scripts/spectrum_3d.gd" id="2_sjrhr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3lmkc"]
 render_priority = 0
 shader = ExtResource("2_ol03x")
-shader_parameter/heights = PackedFloat32Array()
+shader_parameter/bins = null
+shader_parameter/bins_per_spec = 100.0
+shader_parameter/spec_scale = 36.667
+shader_parameter/bin_width = 0.303
+shader_parameter/spec_separation = 4.111
+shader_parameter/spec_colors = PackedColorArray(0, 1, 0, 1, 0.780392, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0.941176, 1, 1, 0.956863, 0, 1)
 
 [node name="Spectrum3D" instance=ExtResource("1_tqhrk")]
 script = ExtResource("2_sjrhr")

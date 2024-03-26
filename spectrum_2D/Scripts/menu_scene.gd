@@ -1,6 +1,6 @@
 extends Control
 
-@onready var 
+# @onready var 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,4 +34,4 @@ func parse_dir(dir_path):
 	else:
 		print("Something's gone wrong with the dir!")
 		
-	var stroing = Global.res_path + "/" + Global.songname + "/" + Global.songname + " - Bass.mp3"
+	# var stroing = Global.res_path + "/" + Global.songname + "/" + Global.songname + " - Bass.mp3"
