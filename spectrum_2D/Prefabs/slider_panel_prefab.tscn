@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8ctrxdy417uw"]
+
+[ext_resource type="Theme" uid="uid://bewn6sinpr4as" path="res://Temp Dev Stuff/KenneyUI/kenneyUI-blue.tres" id="1_cj2j6"]
+[ext_resource type="Script" path="res://Scripts/UI Scripts/slider_panel.gd" id="2_xd5gq"]
+[ext_resource type="Texture2D" uid="uid://b1m61mu3c3yt8" path="res://Temp Dev Stuff/slider_bar.png" id="3_tv111"]
+
+[node name="SliderPanelPrefab" type="Panel"]
+custom_minimum_size = Vector2(200, 80)
+theme = ExtResource("1_cj2j6")
+script = ExtResource("2_xd5gq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 193.0
+offset_bottom = 75.0
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Slider"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control"]
+visible = false
+layout_mode = 0
+offset_left = 60.0
+offset_top = 18.0
+offset_right = 289.0
+offset_bottom = 25.0
+scale = Vector2(0.5, 1)
+texture = ExtResource("3_tv111")
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/Control"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -22.0
+offset_right = 13.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+size_flags_horizontal = 8
+size_flags_vertical = 1
+tick_count = 10
+ticks_on_borders = true
+
+[node name="NumberLabel" type="Label" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -9.0
+offset_right = 48.0
+offset_bottom = 9.0
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="VBoxContainer/Control/HSlider" to="." method="_on_h_slider_value_changed"]

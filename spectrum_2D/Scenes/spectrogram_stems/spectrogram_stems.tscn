@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://w6pp5ut84tvx"]
+[gd_scene load_steps=6 format=3 uid="uid://w6pp5ut84tvx"]
 
 [ext_resource type="Script" path="res://Scripts/spectrograms.gd" id="1_ihkls"]
 [ext_resource type="Script" path="res://Scenes/spectrogram_stems/camera.gd" id="2_pih38"]
 [ext_resource type="PackedScene" uid="uid://cmwx3pasdfry" path="res://Scenes/spectrogram_stems/spectrum_3d.tscn" id="3_2mdqd"]
+[ext_resource type="PackedScene" uid="uid://c4o67e7m3gdh3" path="res://Scenes/UI_scene.tscn" id="4_dahan"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_oqv72"]
 
@@ -27,3 +28,5 @@ mesh = SubResource("SphereMesh_oqv72")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, -0.025, 50)
 projection = 1
 size = 72.833
+
+[node name="UICanvas" parent="." instance=ExtResource("4_dahan")]
