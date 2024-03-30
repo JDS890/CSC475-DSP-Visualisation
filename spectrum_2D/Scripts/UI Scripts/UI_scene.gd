@@ -16,14 +16,19 @@ func _ready():
 func _process(delta):
 	pass
 
-func _input(event):	
+func _input(event):
+	if Input.is_action_just_pressed("hide_UI"):
+		_hidden_UI = !_hidden_UI
+		self.visible = _hidden_UI
+		
 	# Receives key input
-	if event is InputEventKey:
-		match event.keycode:
-			KEY_H:
-				_hidden_UI = !_hidden_UI
-				self.visible = _hidden_UI
+	#if event is InputEventKey:
+	#	match event.keycode:
+	#		KEY_H:
+	#			_hidden_UI = !_hidden_UI
+	#			self.visible = _hidden_UI
+	#			#set_input_as_handled()
 
 # boice
-func _on_check_box_toggled_1(toggled_on):
-	pass
+#func _on_check_box_toggled_1(toggled_on):
+#	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4o67e7m3gdh3"]
+[gd_scene load_steps=9 format=3 uid="uid://c4o67e7m3gdh3"]
 
 [ext_resource type="Script" path="res://Scripts/UI Scripts/UI_scene.gd" id="1_4u84t"]
 [ext_resource type="Theme" uid="uid://bewn6sinpr4as" path="res://Temp Dev Stuff/KenneyUI/kenneyUI-blue.tres" id="3_bb74r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://j3sior52yb52" path="res://Temp Dev Stuff/plan 1.png" id="5_e8ggy"]
 [ext_resource type="Texture2D" uid="uid://c4t510ngbeswo" path="res://Temp Dev Stuff/plan 2.png" id="6_v6wlw"]
 [ext_resource type="Texture2D" uid="uid://ccdyq41dq0h8w" path="res://Temp Dev Stuff/plan 3.png" id="7_0x6td"]
+[ext_resource type="Texture2D" uid="uid://no312fnxy8cb" path="res://Temp Dev Stuff/cog_gear_icon_white.png" id="7_c08bh"]
 
 [node name="UICanvas" type="Control"]
 layout_mode = 3
@@ -90,27 +91,44 @@ layout_mode = 2
 stem_ID = 0
 title = "Base"
 val_step = 0.1
+init_value = 1.0
 max_value = 1.0
 
 [node name="Drum" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
 custom_minimum_size = Vector2(200, 89)
 layout_mode = 2
+stem_ID = 1
 title = "Drum"
+val_step = 0.1
+init_value = 1.0
+max_value = 1.0
 
 [node name="Other" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
 custom_minimum_size = Vector2(200, 89)
 layout_mode = 2
+stem_ID = 2
 title = "Other"
+val_step = 0.1
+init_value = 1.0
+max_value = 1.0
 
 [node name="Piano" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
 custom_minimum_size = Vector2(200, 89)
 layout_mode = 2
+stem_ID = 3
 title = "Piano"
+val_step = 0.1
+init_value = 1.0
+max_value = 1.0
 
 [node name="Vocal" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
 custom_minimum_size = Vector2(200, 89)
 layout_mode = 2
+stem_ID = 4
 title = "Vocal"
+val_step = 0.1
+init_value = 1.0
+max_value = 1.0
 
 [node name="Middle Spacer" type="Control" parent="HBoxContainer"]
 layout_mode = 2
@@ -135,12 +153,38 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 18.0
+offset_top = 9.00001
 offset_right = -466.0
-offset_bottom = 23.0
+offset_bottom = 32.0
 grow_horizontal = 2
 scale = Vector2(3, 3)
 text = "Song Playing"
 horizontal_alignment = 1
+
+[node name="ControlHint" type="Label" parent="HBoxContainer/Middle Spacer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press H to hide UI"
+
+[node name="Button" type="Button" parent="HBoxContainer/Middle Spacer"]
+layout_mode = 1
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 731.0
+offset_bottom = 436.0
+scale = Vector2(0.15, 0.15)
+theme = ExtResource("3_bb74r")
+icon = ExtResource("7_c08bh")
+icon_alignment = 1
 
 [node name="RightBar" type="VBoxContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(217, 611)
@@ -204,4 +248,16 @@ val_step = 0.1
 init_value = 1.0
 max_value = 10.0
 
-[connection signal="toggled" from="HBoxContainer/LeftBar/PlayStopContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled_1"]
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 55.0
+offset_top = 43.0
+offset_right = -75.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_bb74r")
