@@ -2,7 +2,7 @@
 
 Project for CSC 475 - Music Information Retrieval by Joshua Stein, Jack Basha, and Brendan Wadey.
 
-Project paper: **Insert Overleaf viewing link here**
+Project paper: [Overleaf Project (Read only)](https://www.overleaf.com/read/pgnpgspfxjzn#e492ae)
 
 ## Milestone 1
 March 20th - Tool Creation
