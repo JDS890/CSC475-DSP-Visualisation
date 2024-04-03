@@ -1,14 +1,15 @@
 extends Control
 
 var _hidden_UI = false
-signal update_spectrogram(new_val, slider_ID)
 signal update_stem(new_val, stem_ID)
-signal flip_stem(toggled_on, stem_ID)
+signal toggle_stem(toggled_on, stem_ID)
+signal update_spectrogram(new_val, slider_ID)
 
 @onready var stem_signal_bus = get_node("HBoxContainer/LeftBar")
 @onready var spectro_signal_bus = get_node("HBoxContainer/RightBar")
 
 # Called when the node enters the scene tree for the first time.
+# Loops through the slider prefab children and listens to their signals.
 func _ready():
 	var stem_controls = stem_signal_bus.get_children()
 	for controller in stem_controls:
@@ -35,14 +36,17 @@ func _input(_event):
 # Basically, 0 = Base, 1 = Drum, 2 = Other, 3 = Piano, 
 #	and 4 = Vocal
 func stem_control_response(new_val, stem_ID):
-	print("New val: ", new_val, " stem ID: ", stem_ID)
+	#print("New val: ", new_val, " stem ID: ", stem_ID)
+	emit_signal("update_stem", new_val, stem_ID)
 	
 # Basically, 0 = Base, 1 = Drum, 2 = Other, 3 = Piano, 
 #	and 4 = Vocal
 func stem_check_response(toggled_on, stem_ID):
-	print("Toggle: ", toggled_on, " stem ID: ", stem_ID)
+	#print("Toggle: ", toggled_on, " stem ID: ", stem_ID)
+	emit_signal("toggle_stem", toggled_on, stem_ID)
 
 # 0 = Bins, 1 = Scale, 2 = Bin Width, 3 = Freq Min, 4 = Freq Max,
 #	5 = Min DB, 6 = Seperation
 func spectro_control_response(new_val, slider_ID):
-	print("New val: ", new_val, " slider ID: ", slider_ID)
+	#print("New val: ", new_val, " slider ID: ", slider_ID)
+	emit_signal("update_spectrogram", new_val, slider_ID)
