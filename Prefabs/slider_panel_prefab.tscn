@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bewn6sinpr4as" path="res://Temp Dev Stuff/KenneyUI/kenneyUI-blue.tres" id="1_cj2j6"]
 [ext_resource type="Script" path="res://Scripts/UI Scripts/slider_panel.gd" id="2_xd5gq"]
-[ext_resource type="Texture2D" uid="uid://b1m61mu3c3yt8" path="res://Temp Dev Stuff/slider_bar.png" id="3_tv111"]
+[ext_resource type="Texture2D" uid="uid://ci8fh70i31uk4" path="res://Temp Dev Stuff/slider_bar.png" id="3_tv111"]
 
 [node name="SliderPanelPrefab" type="Panel"]
 custom_minimum_size = Vector2(200, 80)
@@ -71,4 +71,6 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="drag_ended" from="VBoxContainer/Control/HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="drag_started" from="VBoxContainer/Control/HSlider" to="." method="_on_h_slider_drag_started"]
 [connection signal="value_changed" from="VBoxContainer/Control/HSlider" to="." method="_on_h_slider_value_changed"]
