@@ -4,6 +4,7 @@ var _hidden_UI = false
 signal update_stem(new_val, stem_ID)
 signal toggle_stem(toggled_on, stem_ID)
 signal update_spectrogram(new_val, slider_ID)
+signal toggle_playstop(toggled_on)
 
 @onready var stem_signal_bus = get_node("HBoxContainer/LeftBar")
 @onready var spectro_signal_bus = get_node("HBoxContainer/RightBar")
@@ -50,3 +51,7 @@ func stem_check_response(toggled_on, stem_ID):
 func spectro_control_response(new_val, slider_ID):
 	#print("New val: ", new_val, " slider ID: ", slider_ID)
 	emit_signal("update_spectrogram", new_val, slider_ID)
+
+func _on_check_box_toggled(toggled_on:bool):
+	emit_signal("toggle_playstop", toggled_on)
+

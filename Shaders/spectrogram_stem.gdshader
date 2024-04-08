@@ -50,7 +50,7 @@ void fragment() {
 	//ALBEDO = spec_colors[int(stem_index)].rgb;
 	//ALPHA = spec_colors[int(stem_index)].a;
 	ALBEDO = COLOR.rgb;
-	ALPHA = COLOR.a;
+	//ALPHA = COLOR.a;
 }
 
 //void light() {

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://w6pp5ut84tvx"]
+[gd_scene load_steps=7 format=3 uid="uid://w6pp5ut84tvx"]
 
 [ext_resource type="Script" path="res://Scripts/spectrograms.gd" id="1_ihkls"]
 [ext_resource type="Script" path="res://Scenes/spectrogram_stems/camera.gd" id="2_pih38"]
 [ext_resource type="PackedScene" uid="uid://cmwx3pasdfry" path="res://Scenes/spectrogram_stems/spectrum_3d.tscn" id="3_2mdqd"]
 [ext_resource type="PackedScene" uid="uid://c4o67e7m3gdh3" path="res://Scenes/UI_scene.tscn" id="4_dahan"]
+[ext_resource type="PackedScene" uid="uid://cmev6gewoioo6" path="res://Scenes/spectrogram_stems/skybox.tscn" id="5_3kphs"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_oqv72"]
 
@@ -11,7 +12,7 @@
 script = ExtResource("1_ihkls")
 
 [node name="OrbitingCamera" type="Camera3D" parent="." node_paths=PackedStringArray("camera_target")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+transform = Transform3D(0.356966, 0.625143, -0.694097, 0, 0.743051, 0.669234, 0.934117, -0.238894, 0.265244, 4.18606, 10, 1.93885)
 script = ExtResource("2_pih38")
 camera_target = NodePath("../target")
 
@@ -30,3 +31,9 @@ projection = 1
 size = 72.833
 
 [node name="UICanvas" parent="." instance=ExtResource("4_dahan")]
+
+[node name="skybox" parent="." instance=ExtResource("5_3kphs")]
+
+[connection signal="toggle_playstop" from="UICanvas" to="." method="_on_ui_canvas_toggle_playstop"]
+[connection signal="toggle_stem" from="UICanvas" to="." method="_on_ui_canvas_toggle_stem"]
+[connection signal="update_spectrogram" from="UICanvas" to="." method="_on_ui_canvas_update_spectrogram"]

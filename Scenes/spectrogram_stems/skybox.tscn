@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmev6gewoioo6"]
+
+[ext_resource type="PackedScene" uid="uid://ok5sa6f6lioo" path="res://Scenes/spectrogram_stems/skybox.glb" id="1_j4j7r"]
+[ext_resource type="Shader" path="res://Shaders/skybox.gdshader" id="2_d54xr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0whu8"]
+render_priority = 0
+shader = ExtResource("2_d54xr")
+
+[node name="skybox" instance=ExtResource("1_j4j7r")]
+
+[node name="Skybox" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_0whu8")

@@ -4,10 +4,10 @@
 [ext_resource type="Theme" uid="uid://bewn6sinpr4as" path="res://Temp Dev Stuff/KenneyUI/kenneyUI-blue.tres" id="3_bb74r"]
 [ext_resource type="PackedScene" uid="uid://b4ychygfrwjvs" path="res://Prefabs/stem_control_prefab.tscn" id="3_dgq81"]
 [ext_resource type="PackedScene" uid="uid://b8ctrxdy417uw" path="res://Prefabs/slider_panel_prefab.tscn" id="3_upf01"]
-[ext_resource type="Texture2D" uid="uid://cvpvuaeqeg7fs" path="res://Temp Dev Stuff/plan 1.png" id="5_e8ggy"]
-[ext_resource type="Texture2D" uid="uid://dmu4t7pirjxiv" path="res://Temp Dev Stuff/plan 2.png" id="6_v6wlw"]
-[ext_resource type="Texture2D" uid="uid://by37006qi24k" path="res://Temp Dev Stuff/plan 3.png" id="7_0x6td"]
-[ext_resource type="Texture2D" uid="uid://2x8qvraab0p7" path="res://Temp Dev Stuff/cog_gear_icon_white.png" id="7_c08bh"]
+[ext_resource type="Texture2D" uid="uid://domy48eqd65n" path="res://Temp Dev Stuff/plan 1.png" id="5_e8ggy"]
+[ext_resource type="Texture2D" uid="uid://ckukmr4cm1oqe" path="res://Temp Dev Stuff/plan 2.png" id="6_v6wlw"]
+[ext_resource type="Texture2D" uid="uid://50h2d7xcti1e" path="res://Temp Dev Stuff/plan 3.png" id="7_0x6td"]
+[ext_resource type="Texture2D" uid="uid://dm7w40voeqpu0" path="res://Temp Dev Stuff/cog_gear_icon_white.png" id="7_c08bh"]
 
 [node name="UICanvas" type="Control"]
 layout_mode = 3
@@ -261,3 +261,5 @@ offset_bottom = -59.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_bb74r")
+
+[connection signal="toggled" from="HBoxContainer/LeftBar/PlayStopContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]

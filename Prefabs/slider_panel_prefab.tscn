@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bewn6sinpr4as" path="res://Temp Dev Stuff/KenneyUI/kenneyUI-blue.tres" id="1_cj2j6"]
 [ext_resource type="Script" path="res://Scripts/UI Scripts/slider_panel.gd" id="2_xd5gq"]
-[ext_resource type="Texture2D" uid="uid://ci8fh70i31uk4" path="res://Temp Dev Stuff/slider_bar.png" id="3_tv111"]
+[ext_resource type="Texture2D" uid="uid://b4tdqwh51qk6e" path="res://Temp Dev Stuff/slider_bar.png" id="3_tv111"]
 
 [node name="SliderPanelPrefab" type="Panel"]
 custom_minimum_size = Vector2(200, 80)
