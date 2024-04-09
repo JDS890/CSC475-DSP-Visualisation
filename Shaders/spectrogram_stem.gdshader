@@ -66,9 +66,9 @@ void vertex() {
 		
 		if (bin_index < bins_per_spec) {
 			
-			heights[0] = bins[bin_index_int] * VERTEX.y * spec_scale;
+			heights[0] = bins[bin_index_int] * spec_scale;
 			for (int i = 1; i <= stem_index_int; i++) {
-				heights[i] = heights[i-1] + bins[(i << 8) + bin_index_int] * VERTEX.y * spec_scale;
+				heights[i] = heights[i-1] + bins[(i << 8) + bin_index_int] * spec_scale;
 			}
 			
 			float x_offset = VERTEX.x - bin_index - 0.25; // 0.0 or 0.5
@@ -76,7 +76,7 @@ void vertex() {
 			
 			VERTEX = vec3(
 				(0.5 * bin_index + x_offset * bin_width) * (256.0 / bins_per_spec),
-				heights[stem_index_int],
+				heights[stem_index_int] * VERTEX.y,
 				//VERTEX.y * spec_scale,
 				-0.5 * spec_separation * stem_index + z_offset
 			);
@@ -113,12 +113,13 @@ void fragment() {
 				break;
 			}
 		}
+		//if (height_vary <= )
 		
-		//if (height_vary < 12.0) {
+		//if (height_vary < heights[0]) {
 			//ALBEDO = vec3(1.0);
 			//
 		//} else {
-			//ALBEDO = vec3(0.0);
+			//ALBEDO = vec3(1.0, 0.0, 0.0);
 		//}
 		
 		//if (VERTEX.y < 2.0) {
