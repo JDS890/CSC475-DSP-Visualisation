@@ -23,7 +23,7 @@ const CAMERA_MODES = [
 
 const STEMS = [
 	"Bass",
-	"Drums",
+	"Drum",
 	"Other",
 	"Piano",
 	"Vocal",
