@@ -28,7 +28,7 @@ func _ready():
 	for controller in spectro_controls:
 		controller.slider_update.connect(spectro_control_response)
 
-	song_label.text = Global.songname
+	song_label.text = Global.PROGRAM_SONGS[0]
 
 # Logic for hiding the UI on button press
 func _input(_event):

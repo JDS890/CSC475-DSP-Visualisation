@@ -92,11 +92,11 @@ grow_horizontal = 2
 grow_vertical = 2
 button_pressed = true
 
-[node name="Base" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
+[node name="Bass" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
 custom_minimum_size = Vector2(200, 89)
 layout_mode = 2
 stem_ID = 0
-title = "Base"
+title = "Bass"
 val_step = 0.1
 init_value = 1.0
 max_value = 1.0
