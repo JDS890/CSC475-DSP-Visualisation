@@ -60,5 +60,5 @@ func _on_h_slider_drag_started():
 # 	function less often, to save on resources
 func _on_h_slider_value_changed(value):
 	num_label.text = str(value)
-	if _is_dragging == false:
-		emit_signal("stem_update", value, stem_ID)
+	#if _is_dragging == false:
+	emit_signal("stem_update", value, stem_ID)

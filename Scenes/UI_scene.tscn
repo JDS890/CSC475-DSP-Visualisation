@@ -141,7 +141,7 @@ max_value = 1.0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSlider" type="HSlider" parent="HBoxContainer/Middle Spacer"]
+[node name="TrackSlider" type="HSlider" parent="HBoxContainer/Middle Spacer"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.042
@@ -271,3 +271,4 @@ grow_vertical = 2
 theme = ExtResource("3_bb74r")
 
 [connection signal="toggled" from="HBoxContainer/LeftBar/PlayStopContainer/PlayStopCheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="drag_ended" from="HBoxContainer/Middle Spacer/TrackSlider" to="." method="_on_track_slider_drag_ended"]

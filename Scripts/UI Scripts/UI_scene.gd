@@ -5,9 +5,12 @@ signal update_stem(new_val, stem_ID)
 signal toggle_stem(toggled_on, stem_ID)
 signal update_spectrogram(new_val, slider_ID)
 signal toggle_playstop(toggled_on)
+signal track_seek(track_poz)
 
 @onready var stem_signal_bus = get_node("HBoxContainer/LeftBar")
 @onready var spectro_signal_bus = get_node("HBoxContainer/RightBar")
+@onready var song_label = get_node("HBoxContainer/Middle Spacer/SongLabel")
+@onready var track_bar = get_node("HBoxContainer/Middle Spacer/TrackSlider")
 
 # Called when the node enters the scene tree for the first time.
 # Loops through the slider prefab children and listens to their signals.
@@ -25,12 +28,11 @@ func _ready():
 	for controller in spectro_controls:
 		controller.slider_update.connect(spectro_control_response)
 
-
+# Logic for hiding the UI on button press
 func _input(_event):
 	if Input.is_action_just_pressed("hide_UI"):
 		_hidden_UI = !_hidden_UI
 		self.visible = _hidden_UI
-
 
 # These IDs are associated with each slider in the order they
 # 	they appear in the UI.
@@ -52,5 +54,11 @@ func spectro_control_response(new_val, slider_ID):
 	#print("New val: ", new_val, " slider ID: ", slider_ID)
 	emit_signal("update_spectrogram", new_val, slider_ID)
 
+# Specifically the music play / pause button
 func _on_check_box_toggled(toggled_on:bool):
 	emit_signal("toggle_playstop", toggled_on)
+
+# Emits a value from 0 to 100
+func _on_track_slider_drag_ended(value_changed):
+	if value_changed:
+		emit_signal("track_seek", track_bar.value)
