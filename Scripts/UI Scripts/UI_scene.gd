@@ -54,4 +54,3 @@ func spectro_control_response(new_val, slider_ID):
 
 func _on_check_box_toggled(toggled_on:bool):
 	emit_signal("toggle_playstop", toggled_on)
-
