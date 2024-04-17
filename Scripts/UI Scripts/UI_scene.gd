@@ -2,7 +2,7 @@ extends Control
 
 var _hidden_UI = false
 signal update_stem(new_val, stem_ID)
-signal toggle_stem(toggled_on, stem_ID)
+signal toggle_stem(toggled_on, stem_ID, stem_val)
 signal update_spectrogram(new_val, slider_ID)
 signal toggle_playstop(toggled_on)
 signal track_seek(track_poz)
@@ -44,9 +44,10 @@ func stem_control_response(new_val, stem_ID):
 	
 # Basically, 0 = Base, 1 = Drum, 2 = Other, 3 = Piano, 
 #	and 4 = Vocal
-func stem_check_response(toggled_on, stem_ID):
+func stem_check_response(toggled_on, stem_ID, stem_val):
 	#print("Toggle: ", toggled_on, " stem ID: ", stem_ID)
-	emit_signal("toggle_stem", toggled_on, stem_ID)
+	print(stem_val)
+	emit_signal("toggle_stem", toggled_on, stem_ID, stem_val)
 
 # 0 = Bins, 1 = Scale, 2 = Bin Width, 3 = Freq Min, 4 = Freq Max,
 #	5 = Min DB, 6 = Seperation

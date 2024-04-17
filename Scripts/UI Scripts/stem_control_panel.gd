@@ -38,7 +38,7 @@ func _on_check_box_toggled(toggled_on):
 		#label_title.modulate = Color.BLACK
 		#num_label.modulate = Color.BLACK
 		
-	emit_signal("stem_checkbox_update", toggled_on, stem_ID)
+	emit_signal("stem_checkbox_update", toggled_on, stem_ID, slider.value)
 
 
 func _on_h_slider_drag_ended(value_changed):
@@ -60,5 +60,6 @@ func _on_h_slider_drag_started():
 # 	function less often, to save on resources
 func _on_h_slider_value_changed(value):
 	num_label.text = str(value)
+	#print(value)
 	#if _is_dragging == false:
 	emit_signal("stem_update", value, stem_ID)
