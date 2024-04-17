@@ -10,6 +10,14 @@ const STEMBUS_NAMES = [
 	&"Vocal Bus",
 ]
 
+var stembus_volumes = [
+	1.0,
+	1.0,
+	1.0,
+	1.0,
+	1.0
+]
+
 var spectrum_analyzers: Array = []
 var spectrums: PackedFloat32Array = PackedFloat32Array()
 var material: Material = null
@@ -74,7 +82,6 @@ func _ready():
 	
 
 func _input(event):
-
 	if event is InputEventKey:
 		match event.keycode:
 			KEY_I:
@@ -86,8 +93,7 @@ func _input(event):
 					asp.play()
 	
 				print("Playing ", Global.PROGRAM_SONGS[current_program_song_id])
-
-
+				Global.songname = Global.PROGRAM_SONGS[current_program_song_id]
 
 func _process(_delta):
 
@@ -111,9 +117,17 @@ func _process(_delta):
 
 
 
-func _on_ui_canvas_toggle_stem(toggled_on:Variant, stem_ID:Variant):
-	material.set_shader_parameter("toggled_on", toggled_on)
+func _on_ui_canvas_toggle_stem(toggled_on:Variant, stem_ID:Variant, stem_val:Variant):
+	#material.set_shader_parameter("toggled_on", toggled_on)
 	print("Toggled on: ", toggled_on, " Stem ID: ", stem_ID)
+	
+	if toggled_on:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(STEMBUS_NAMES[stem_ID]), linear_to_db(0))
+	else:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(STEMBUS_NAMES[stem_ID]), linear_to_db(stem_val))
+
+func _on_ui_canvas_update_stem(new_val:Variant, stem_ID:Variant):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(STEMBUS_NAMES[stem_ID]), linear_to_db(new_val))
 
 
 func _on_ui_canvas_toggle_playstop(toggled_on:Variant):

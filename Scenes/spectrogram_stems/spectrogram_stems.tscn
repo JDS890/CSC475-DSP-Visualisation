@@ -13,6 +13,7 @@ script = ExtResource("1_ihkls")
 
 [node name="OrbitingCamera" type="Camera3D" parent="." node_paths=PackedStringArray("camera_target")]
 transform = Transform3D(0.356966, 0.625143, -0.694097, 0, 0.743051, 0.669234, 0.934117, -0.238894, 0.265244, 4.18606, 10, 1.93885)
+current = true
 script = ExtResource("2_pih38")
 camera_target = NodePath("../target")
 
@@ -37,3 +38,4 @@ size = 72.833
 [connection signal="toggle_playstop" from="UICanvas" to="." method="_on_ui_canvas_toggle_playstop"]
 [connection signal="toggle_stem" from="UICanvas" to="." method="_on_ui_canvas_toggle_stem"]
 [connection signal="update_spectrogram" from="UICanvas" to="." method="_on_ui_canvas_update_spectrogram"]
+[connection signal="update_stem" from="UICanvas" to="." method="_on_ui_canvas_update_stem"]
