@@ -79,7 +79,7 @@ const MIN_DB = 60
 # Music
 const songs = ["Circle the Drain", "Hangman", "Like a Shadow",
 				"Dharma", "Plastic Heart", "Mt Eden", "Anyone"]
-const songname = songs[0]
+var songname = songs[0]
 const res_path = "res://Audio Samples/"
 
 # Probably not needed, but here just in case

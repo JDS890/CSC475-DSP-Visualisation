@@ -28,11 +28,17 @@ func _ready():
 	for controller in spectro_controls:
 		controller.slider_update.connect(spectro_control_response)
 
+	song_label.text = Global.songname
+
 # Logic for hiding the UI on button press
 func _input(_event):
 	if Input.is_action_just_pressed("hide_UI"):
 		_hidden_UI = !_hidden_UI
 		self.visible = _hidden_UI
+	elif Input.is_action_just_pressed("change_song"):
+		await get_tree().create_timer(0.2).timeout
+		print("Changed song to name", Global.songname)
+		song_label.text = Global.songname
 
 # These IDs are associated with each slider in the order they
 # 	they appear in the UI.
