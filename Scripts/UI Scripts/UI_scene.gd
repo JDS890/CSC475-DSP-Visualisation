@@ -69,3 +69,7 @@ func _on_check_box_toggled(toggled_on:bool):
 func _on_track_slider_drag_ended(value_changed):
 	if value_changed:
 		emit_signal("track_seek", track_bar.value)
+
+
+func _on_track_slider_value_changed(value:float):
+	emit_signal("track_seek", track_bar.value)

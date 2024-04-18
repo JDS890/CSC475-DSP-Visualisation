@@ -47,6 +47,7 @@ enum UISLIDERS {
 	FREQ_MAX = 4,
 	MIN_DB = 5,
 	SEPARATION = 6,
+	ALPHA = 7,
 }
 
 enum SPECMODES {
@@ -69,8 +70,9 @@ var MIN_DB_DEFAULT: float = 60.0
 var BINS_PER_SPEC_DEFAULT: int = 256
 var HEIGHT_SCALE_DEFAULT: float = 10.0
 var BIN_WIDTH_DEFAULT: float = 0.5
-var SPEC_SEPARATION: float = 5.0
-var SPEC_MODE: int = SPECMODES.STACK;
+var SPEC_SEPARATION_DEFAULT: float = 5.0
+var SPEC_MODE_DEFAULT: int = SPECMODES.STACK
+var ALPHA_DEFAULT: float = 0.25
 
 
 

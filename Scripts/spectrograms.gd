@@ -10,7 +10,6 @@ const STEMBUS_NAMES = [
 	&"Vocal Bus",
 ]
 
-
 var spectrum_analyzers: Array = []
 var spectrums: PackedFloat32Array = PackedFloat32Array()
 var material: Material = null
@@ -18,16 +17,14 @@ var audio_stream_players: Array = []
 var asp_last_seek = 0.0
 var current_program_song_id = 4 # Like a Shadow
 
-# ToDo: Connect UI signals to functions in this script that update these variables
-var spec_mode: int = Global.SPEC_MODE
+var spec_mode: int = Global.SPEC_MODE_DEFAULT
 var freq_min: float = Global.FREQ_MIN_DEFAULT
 var freq_max: float = Global.FREQ_MAX_DEFAULT
 var min_db: float = Global.MIN_DB_DEFAULT
 var bins_per_spec: int = Global.BINS_PER_SPEC_DEFAULT
 var stem_height_scales = Global.STEM_HEIGHT_SCALES_DEFAULT
+var stem_height_toggles = [1.0, 1.0, 1.0, 1.0, 1.0]
 
-
-# ToDo: UI signal should pass an array of bus names for the 
 
 func _load_program_song(program_song_id):
 	if program_song_id not in range(Global.PROGRAM_SONGS.size()):
@@ -78,20 +75,15 @@ func _ready():
 	material.set_shader_parameter("bins_per_spec", bins_per_spec)
 	material.set_shader_parameter("spec_scale", Global.HEIGHT_SCALE_DEFAULT)
 	material.set_shader_parameter("bin_width", Global.BIN_WIDTH_DEFAULT)
-	material.set_shader_parameter("spec_separation", Global.SPEC_SEPARATION)
+	material.set_shader_parameter("spec_separation", Global.SPEC_SEPARATION_DEFAULT)
 	material.set_shader_parameter("spec_scales", stem_height_scales)
-	material.set_shader_parameter("mode", spec_mode)
-	
-	#func _input(_event):
-	#if Input.is_action_just_pressed("hide_UI"):
-		#_hidden_UI = !_hidden_UI
-		#self.visible = _hidden_UI
-	#elif Input.is_action_just_pressed("change_song"):
-		#await get_tree().create_timer(0.2).timeout
-		#print("Changed song to name", Global.songname)
-		#song_label.text = Global.songname
+	material.set_shader_parameter("mode", Global.SPEC_MODE_DEFAULT)
+	material.set_shader_parameter("alpha", Global.ALPHA_DEFAULT)
 
-func _input(event):
+	# $OrthoCam.set_current(true)
+	
+
+func _input(_event):
 	if Input.is_action_just_pressed("change_song"):
 		for asp in audio_stream_players:
 			asp.stop()
@@ -107,6 +99,7 @@ func _input(event):
 		material.set_shader_parameter("mode", spec_mode)
 		print("change_mode pressed!")
 		
+
 func _process(_delta):
 
 	for j in range(spectrum_analyzers.size()):
@@ -122,37 +115,34 @@ func _process(_delta):
 			spectrums[(j << 8) + i] = energy
 			freq_prev = freq
 	
-	# Update shader uniform
-	# print first 10 values of first spectrum
-	# print(spectrums[0], spectrums[1], spectrums[2], spectrums[3], spectrums[4], spectrums[5], spectrums[6], spectrums[7], spectrums[8], spectrums[9])
 	material.set_shader_parameter("bins", spectrums)
 
 
+func _update_scales():
+	var stem_height_scales_temp = stem_height_scales.duplicate()
+	for i in range(stem_height_scales.size()):
+		stem_height_scales_temp[i] *= stem_height_toggles[i]
+	material.set_shader_parameter("spec_scales", stem_height_scales_temp)
+
 
 func _on_ui_canvas_toggle_stem(toggled_on:Variant, stem_ID:Variant, stem_val:Variant):
-	#material.set_shader_parameter("toggled_on", toggled_on)
 	print("Toggled on: ", toggled_on, " Stem ID: ", stem_ID)
-	
-	if not toggled_on:
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(STEMBUS_NAMES[stem_ID]), linear_to_db(0))
-		var stem_height_scales_temp = stem_height_scales.duplicate()
-		stem_height_scales_temp[stem_ID] = 0.0;
-		print("turning off stem ", stem_ID)
-		material.set_shader_parameter("spec_scales", stem_height_scales_temp)
+	if toggled_on:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(STEMBUS_NAMES[stem_ID]), linear_to_db(stem_val))
+		stem_height_toggles[stem_ID] = 1.0
+		_update_scales()
 		
 	else:
-		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(STEMBUS_NAMES[stem_ID]), linear_to_db(stem_val))
-		material.set_shader_parameter("spec_scales", stem_height_scales)
-		print(stem_height_scales)
-		print("toggled on volume")
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(STEMBUS_NAMES[stem_ID]), linear_to_db(0))
+		stem_height_toggles[stem_ID] = 0.0
+		_update_scales()
+
 
 func _on_ui_canvas_update_stem(new_val:Variant, stem_ID:Variant):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(STEMBUS_NAMES[stem_ID]), linear_to_db(new_val))
 	stem_height_scales[stem_ID] = new_val;
-	material.set_shader_parameter("spec_scales", stem_height_scales)
+	_update_scales()
 	
-	
-
 
 func _on_ui_canvas_toggle_playstop(toggled_on:Variant):
 
@@ -166,23 +156,7 @@ func _on_ui_canvas_toggle_playstop(toggled_on:Variant):
 		material.set_shader_parameter("spec_scales", stem_height_scales_off)
 
 
-	# Get current position of first audio stream player
-	# var current_position = audio_stream_players[0].get_playback_position()
 
-	# if toggled_on:
-	# 	for asp in audio_stream_players:
-	# 		asp.seek(asp_last_seek)
-	# 		asp.play()
-	# 		asp.playing = toggled_on
-	# 		asp.stream_paused = not toggled_on
-	# 		print("Playing: ", asp.playing, " Stream paused: ", asp.stream_paused)
-	# else:
-	# 	asp_last_seek = current_position
-	# 	for asp in audio_stream_players:
-	# 		asp.stop()
-	# 		asp.playing = toggled_on
-	# 		asp.stream_paused = not toggled_on
-	# 		print("Playing: ", asp.playing, " Stream paused: ", asp.stream_paused)
 
 
 func _on_ui_canvas_update_spectrogram(new_val:Variant, slider_ID:Variant):
@@ -219,6 +193,45 @@ func _on_ui_canvas_update_spectrogram(new_val:Variant, slider_ID:Variant):
 
 		Global.UISLIDERS.SEPARATION:
 			material.set_shader_parameter("spec_separation", new_val)
+		
+		Global.UISLIDERS.ALPHA:
+			material.set_shader_parameter("alpha", new_val)
 		_:
 			print("Invalid slider ID: ", slider_ID)
 			return
+
+
+func _on_ui_canvas_track_seek(track_poz):
+	var length = audio_stream_players[0].stream.get_length()
+	var seek = length * track_poz / 100.0
+	for asp in audio_stream_players:
+		asp.seek(seek)
+
+	# for asp in audio_stream_players:
+	# 	asp.stop()
+	
+
+	# 	asp.seek(length * track_poz)
+	# 	asp.play()
+	# 	asp.playing = true
+	# 	asp.stream_paused = false
+
+
+	# var current_position = audio_stream_players[0].get_playback_position()
+
+	# get length of first audio stream player
+
+	# if toggled_on:
+	# 	for asp in audio_stream_players:
+	# 		asp.seek(asp_last_seek)
+	# 		asp.play()
+	# 		asp.playing = toggled_on
+	# 		asp.stream_paused = not toggled_on
+	# 		print("Playing: ", asp.playing, " Stream paused: ", asp.stream_paused)
+	# else:
+	# 	asp_last_seek = current_position
+	# 	for asp in audio_stream_players:
+	# 		asp.stop()
+	# 		asp.playing = toggled_on
+	# 		asp.stream_paused = not toggled_on
+	# 		print("Playing: ", asp.playing, " Stream paused: ", asp.stream_paused)

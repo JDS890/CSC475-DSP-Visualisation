@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmwx3pasdfry"]
 
-[ext_resource type="PackedScene" uid="uid://dlpp1uekk8pb6" path="res://Scenes/spectrogram_stems/spectrum.glb" id="1_tqhrk"]
+[ext_resource type="PackedScene" uid="uid://bspp4plxskmfc" path="res://Scenes/spectrogram_stems/spectrum.glb" id="1_tqhrk"]
 [ext_resource type="Shader" path="res://Shaders/spectrogram_stem.gdshader" id="2_ol03x"]
 [ext_resource type="Script" path="res://Scripts/spectrum_3d.gd" id="2_sjrhr"]
 
@@ -13,9 +13,13 @@ shader_parameter/spec_scale = 36.667
 shader_parameter/bin_width = 0.303
 shader_parameter/spec_separation = 4.111
 shader_parameter/spec_colors = PackedColorArray(0, 1, 0, 1, 0.780392, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0.941176, 1, 1, 0.956863, 0, 1)
+shader_parameter/spec_scales = null
+shader_parameter/alpha = null
+shader_parameter/mode = 1
 
 [node name="Spectrum3D" instance=ExtResource("1_tqhrk")]
 script = ExtResource("2_sjrhr")
 
 [node name="Cube" parent="." index="0"]
+custom_aabb = AABB(-10000, -10000, -10000, 20000, 20000, 20000)
 surface_material_override/0 = SubResource("ShaderMaterial_3lmkc")

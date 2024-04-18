@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://b4ychygfrwjvs" path="res://Prefabs/stem_control_prefab.tscn" id="3_dgq81"]
 [ext_resource type="PackedScene" uid="uid://b8ctrxdy417uw" path="res://Prefabs/slider_panel_prefab.tscn" id="3_upf01"]
 [ext_resource type="Theme" uid="uid://yem3726wnio6" path="res://Assets/jack_theme.tres" id="5_66uyq"]
-[ext_resource type="Texture2D" uid="uid://cvpvuaeqeg7fs" path="res://Temp Dev Stuff/plan 1.png" id="5_e8ggy"]
-[ext_resource type="Texture2D" uid="uid://dmu4t7pirjxiv" path="res://Temp Dev Stuff/plan 2.png" id="6_v6wlw"]
-[ext_resource type="Texture2D" uid="uid://by37006qi24k" path="res://Temp Dev Stuff/plan 3.png" id="7_0x6td"]
-[ext_resource type="Texture2D" uid="uid://2x8qvraab0p7" path="res://Temp Dev Stuff/cog_gear_icon_white.png" id="7_c08bh"]
+[ext_resource type="Texture2D" uid="uid://cgx6uhkfwlu4n" path="res://Temp Dev Stuff/plan 1.png" id="5_e8ggy"]
+[ext_resource type="Texture2D" uid="uid://brcpvlun430t7" path="res://Temp Dev Stuff/plan 2.png" id="6_v6wlw"]
+[ext_resource type="Texture2D" uid="uid://bgrwi74gin2a5" path="res://Temp Dev Stuff/plan 3.png" id="7_0x6td"]
+[ext_resource type="Texture2D" uid="uid://dyo7qhb75febn" path="res://Temp Dev Stuff/cog_gear_icon_white.png" id="7_c08bh"]
 
 [node name="UICanvas" type="Control"]
 layout_mode = 3
@@ -70,12 +70,11 @@ theme = ExtResource("5_66uyq")
 
 [node name="Label" type="Label" parent="HBoxContainer/LeftBar/PlayStopContainer"]
 layout_mode = 2
-offset_left = 9.0
+offset_left = 23.0
 offset_top = 9.0
-offset_right = 206.0
+offset_right = 220.0
 offset_bottom = 32.0
-text = "Play/STOP"
-horizontal_alignment = 1
+text = "Play / Stop"
 
 [node name="PlayStopCheckBox" type="CheckBox" parent="HBoxContainer/LeftBar/PlayStopContainer"]
 layout_mode = 1
@@ -84,37 +83,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -12.0
-offset_top = -7.0
-offset_right = 12.0
-offset_bottom = 17.0
+offset_left = 28.0
+offset_top = -30.0
+offset_right = 52.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 button_pressed = true
 
-[node name="Bass" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
+[node name="Vocal" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
 custom_minimum_size = Vector2(200, 89)
 layout_mode = 2
-stem_ID = 0
-title = "Bass"
-val_step = 0.1
-init_value = 1.0
-max_value = 1.0
-
-[node name="Drum" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
-custom_minimum_size = Vector2(200, 89)
-layout_mode = 2
-stem_ID = 1
-title = "Drum"
-val_step = 0.1
-init_value = 1.0
-max_value = 1.0
-
-[node name="Other" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
-custom_minimum_size = Vector2(200, 89)
-layout_mode = 2
-stem_ID = 2
-title = "Other"
+stem_ID = 4
+title = "Vocal"
 val_step = 0.1
 init_value = 1.0
 max_value = 1.0
@@ -128,11 +109,29 @@ val_step = 0.1
 init_value = 1.0
 max_value = 1.0
 
-[node name="Vocal" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
+[node name="Other" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
 custom_minimum_size = Vector2(200, 89)
 layout_mode = 2
-stem_ID = 4
-title = "Vocal"
+stem_ID = 2
+title = "Other"
+val_step = 0.1
+init_value = 1.0
+max_value = 1.0
+
+[node name="Drum" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
+custom_minimum_size = Vector2(200, 89)
+layout_mode = 2
+stem_ID = 1
+title = "Drum"
+val_step = 0.1
+init_value = 1.0
+max_value = 1.0
+
+[node name="Bass" parent="HBoxContainer/LeftBar" instance=ExtResource("3_dgq81")]
+custom_minimum_size = Vector2(200, 89)
+layout_mode = 2
+stem_ID = 0
+title = "Bass"
 val_step = 0.1
 init_value = 1.0
 max_value = 1.0
@@ -159,12 +158,13 @@ grow_vertical = 0
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 18.0
-offset_top = 9.00001
-offset_right = -466.0
-offset_bottom = 32.0
+offset_left = -112.0
+offset_top = 24.0
+offset_right = 17451.0
+offset_bottom = 4110.0
 grow_horizontal = 2
-scale = Vector2(3, 3)
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/font_size = 500
 text = "Song Playing"
 horizontal_alignment = 1
 
@@ -180,7 +180,7 @@ offset_top = -23.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Press H to hide UI, Press I to change track"
+text = "[H]ide UI, change [T]rack, change [M]ode"
 
 [node name="Button" type="Button" parent="HBoxContainer/Middle Spacer"]
 visible = false
@@ -212,7 +212,7 @@ layout_mode = 2
 slider_ID = 1
 title = "Scale"
 val_step = 0.01
-init_value = 1.0
+init_value = 10.0
 min_value = 0.01
 
 [node name="Bin Width Slider" parent="HBoxContainer/RightBar" instance=ExtResource("3_upf01")]
@@ -220,7 +220,7 @@ layout_mode = 2
 slider_ID = 2
 title = "Bin Width"
 val_step = 0.1
-init_value = 1.0
+init_value = 0.5
 max_value = 1.0
 min_value = 0.1
 
@@ -241,6 +241,7 @@ init_value = 15000.0
 max_value = 30000.0
 
 [node name="Min DB Slider" parent="HBoxContainer/RightBar" instance=ExtResource("3_upf01")]
+visible = false
 layout_mode = 2
 slider_ID = 5
 title = "Min DB"
@@ -248,12 +249,20 @@ init_value = 60.0
 max_value = 60.0
 min_value = -60.0
 
-[node name="Seperation Slider" parent="HBoxContainer/RightBar" instance=ExtResource("3_upf01")]
+[node name="Alpha Slider" parent="HBoxContainer/RightBar" instance=ExtResource("3_upf01")]
+layout_mode = 2
+slider_ID = 7
+title = "Alpha"
+val_step = 0.01
+init_value = 0.25
+max_value = 1.0
+
+[node name="Separation Slider" parent="HBoxContainer/RightBar" instance=ExtResource("3_upf01")]
 layout_mode = 2
 slider_ID = 6
-title = "Seperation"
+title = "Separation"
 val_step = 0.1
-init_value = 1.0
+init_value = 5.0
 max_value = 10.0
 
 [node name="Panel" type="Panel" parent="."]
@@ -272,3 +281,4 @@ theme = ExtResource("3_bb74r")
 
 [connection signal="toggled" from="HBoxContainer/LeftBar/PlayStopContainer/PlayStopCheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="drag_ended" from="HBoxContainer/Middle Spacer/TrackSlider" to="." method="_on_track_slider_drag_ended"]
+[connection signal="value_changed" from="HBoxContainer/Middle Spacer/TrackSlider" to="." method="_on_track_slider_value_changed"]

@@ -12,6 +12,7 @@ uniform float bin_width : hint_range(0.1, 1.0) = 0.5;
 uniform float spec_separation : hint_range(0.0, 10.0) = 1.0;
 uniform vec4 spec_colors[5]: source_color;
 uniform float spec_scales[5];
+uniform float alpha;
 
 uniform int mode = 1;
 
@@ -121,12 +122,13 @@ void fragment() {
 			//
 		//} else {
 			//ALBEDO = vec3(1.0, 0.0, 0.0);
-		//}
+		//}s
 		
 		//if (VERTEX.y < 2.0) {
 			//ALBEDO = spec_colors[0].rgb;
 		//}
 	}
+	ALPHA = alpha;
 }
 
 //void light() {

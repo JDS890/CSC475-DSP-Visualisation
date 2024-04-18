@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://yem3726wnio6" path="res://Assets/jack_theme.tres" id="1_3i6f7"]
 [ext_resource type="Script" path="res://Scripts/UI Scripts/stem_control_panel.gd" id="2_2wxqv"]
-[ext_resource type="Texture2D" uid="uid://ci8fh70i31uk4" path="res://Temp Dev Stuff/slider_bar.png" id="3_am7qs"]
+[ext_resource type="Texture2D" uid="uid://jhmjgienqkai" path="res://Temp Dev Stuff/slider_bar.png" id="3_am7qs"]
 
 [node name="SliderPanelPrefab" type="Panel"]
 custom_minimum_size = Vector2(200, 80)
@@ -30,9 +30,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -135.0
-offset_top = 4.5
-offset_bottom = 36.5
+offset_left = -125.0
+offset_top = -4.5
+offset_right = 10.0
+offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Slider"
@@ -45,10 +46,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 125.0
-offset_top = 3.5
-offset_right = 161.0
-offset_bottom = 39.5
+offset_left = 127.0
+offset_top = -5.5
+offset_right = 163.0
+offset_bottom = 30.5
 grow_vertical = 2
 button_pressed = true
 
