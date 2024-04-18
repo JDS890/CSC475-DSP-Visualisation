@@ -1,4 +1,4 @@
-extends Node
+extends Node 
 
 const PROGRAM_SONGS = [
 	"Anyone",
@@ -48,6 +48,31 @@ enum UISLIDERS {
 	MIN_DB = 5,
 	SEPARATION = 6,
 }
+
+enum SPECMODES {
+	SIMPLE = 0,
+	STACK = 1,
+}
+
+# Default values
+var BINS_DEFAULT: int = 256
+var STEM_HEIGHT_SCALES_DEFAULT = [
+	1.0,
+	1.0,
+	1.0,
+	1.0,
+	1.0
+]
+var FREQ_MIN_DEFAULT: float = 100.0
+var FREQ_MAX_DEFAULT: float = 15000.0
+var MIN_DB_DEFAULT: float = 60.0
+var BINS_PER_SPEC_DEFAULT: int = 256
+var HEIGHT_SCALE_DEFAULT: float = 10.0
+var BIN_WIDTH_DEFAULT: float = 0.5
+var SPEC_SEPARATION: float = 5.0
+var SPEC_MODE: int = SPECMODES.STACK;
+
+
 
 func get_program_song_path(song: String, stem=null) -> String:
 	return ("res://Audio Samples/" + song + "/" + song + 

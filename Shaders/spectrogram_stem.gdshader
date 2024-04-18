@@ -11,6 +11,7 @@ uniform float spec_scale : hint_range(0.01, 100.0) = 1.0;
 uniform float bin_width : hint_range(0.1, 1.0) = 0.5;
 uniform float spec_separation : hint_range(0.0, 10.0) = 1.0;
 uniform vec4 spec_colors[5]: source_color;
+uniform float spec_scales[5];
 
 uniform int mode = 1;
 
@@ -37,7 +38,7 @@ void vertex() {
 				
 				VERTEX = vec3(
 					(0.5 * bin_index + x_offset * bin_width) * (256.0 / bins_per_spec),
-					VERTEX.y * height * spec_scale,
+					VERTEX.y * height * spec_scale * spec_scales[int(stem_index)],
 					//VERTEX.y * spec_scale,
 					-0.5 * spec_separation * stem_index + z_offset
 				);
@@ -68,7 +69,7 @@ void vertex() {
 			
 			heights[0] = bins[bin_index_int] * spec_scale;
 			for (int i = 1; i <= stem_index_int; i++) {
-				heights[i] = heights[i-1] + bins[(i << 8) + bin_index_int] * spec_scale;
+				heights[i] = heights[i-1] + bins[(i << 8) + bin_index_int] * spec_scale * spec_scales[int(stem_index)];
 			}
 			
 			float x_offset = VERTEX.x - bin_index - 0.25; // 0.0 or 0.5
@@ -76,7 +77,7 @@ void vertex() {
 			
 			VERTEX = vec3(
 				(0.5 * bin_index + x_offset * bin_width) * (256.0 / bins_per_spec),
-				heights[stem_index_int] * VERTEX.y,
+				heights[stem_index_int] * VERTEX.y * spec_scales[int(stem_index)],
 				//VERTEX.y * spec_scale,
 				-0.5 * spec_separation * stem_index + z_offset
 			);

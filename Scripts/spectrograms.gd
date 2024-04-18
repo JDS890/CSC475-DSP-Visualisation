@@ -10,27 +10,22 @@ const STEMBUS_NAMES = [
 	&"Vocal Bus",
 ]
 
-var stembus_volumes = [
-	1.0,
-	1.0,
-	1.0,
-	1.0,
-	1.0
-]
 
 var spectrum_analyzers: Array = []
 var spectrums: PackedFloat32Array = PackedFloat32Array()
 var material: Material = null
 var audio_stream_players: Array = []
-var asp_last_seek = 0.0;
-var current_program_song_id = 0
+var asp_last_seek = 0.0
+var current_program_song_id = 4 # Like a Shadow
 
 # ToDo: Connect UI signals to functions in this script that update these variables
-var freq_min: float = 100.0
-var freq_max: float = 15000.0
-var min_db: float = 60.0
-var bins_per_spec: int = 256
-var height_scale: float = 1.0
+var spec_mode: int = Global.SPEC_MODE
+var freq_min: float = Global.FREQ_MIN_DEFAULT
+var freq_max: float = Global.FREQ_MAX_DEFAULT
+var min_db: float = Global.MIN_DB_DEFAULT
+var bins_per_spec: int = Global.BINS_PER_SPEC_DEFAULT
+var stem_height_scales = Global.STEM_HEIGHT_SCALES_DEFAULT
+
 
 # ToDo: UI signal should pass an array of bus names for the 
 
@@ -80,21 +75,38 @@ func _ready():
 	for asp in audio_stream_players:
 		asp.play()
 	
+	material.set_shader_parameter("bins_per_spec", bins_per_spec)
+	material.set_shader_parameter("spec_scale", Global.HEIGHT_SCALE_DEFAULT)
+	material.set_shader_parameter("bin_width", Global.BIN_WIDTH_DEFAULT)
+	material.set_shader_parameter("spec_separation", Global.SPEC_SEPARATION)
+	material.set_shader_parameter("spec_scales", stem_height_scales)
+	material.set_shader_parameter("mode", spec_mode)
+	
+	#func _input(_event):
+	#if Input.is_action_just_pressed("hide_UI"):
+		#_hidden_UI = !_hidden_UI
+		#self.visible = _hidden_UI
+	#elif Input.is_action_just_pressed("change_song"):
+		#await get_tree().create_timer(0.2).timeout
+		#print("Changed song to name", Global.songname)
+		#song_label.text = Global.songname
 
 func _input(event):
-	if event is InputEventKey:
-		match event.keycode:
-			KEY_I:
-				for asp in audio_stream_players:
-					asp.stop()
-				current_program_song_id = (current_program_song_id + 1) % Global.PROGRAM_SONGS.size()
-				_load_program_song(current_program_song_id)
-				for asp in audio_stream_players:
-					asp.play()
-	
-				print("Playing ", Global.PROGRAM_SONGS[current_program_song_id])
-				Global.songname = Global.PROGRAM_SONGS[current_program_song_id]
+	if Input.is_action_just_pressed("change_song"):
+		for asp in audio_stream_players:
+			asp.stop()
+		current_program_song_id = (current_program_song_id + 1) % Global.PROGRAM_SONGS.size()
+		_load_program_song(current_program_song_id)
+		for asp in audio_stream_players:
+			asp.play()
+		print("Playing ", Global.PROGRAM_SONGS[current_program_song_id])
+		Global.songname = Global.PROGRAM_SONGS[current_program_song_id]
 
+	elif Input.is_action_just_pressed("change_mode"):
+		spec_mode = (spec_mode + 1) % Global.SPECMODES.size()
+		material.set_shader_parameter("mode", spec_mode)
+		print("change_mode pressed!")
+		
 func _process(_delta):
 
 	for j in range(spectrum_analyzers.size()):
@@ -121,19 +133,37 @@ func _on_ui_canvas_toggle_stem(toggled_on:Variant, stem_ID:Variant, stem_val:Var
 	#material.set_shader_parameter("toggled_on", toggled_on)
 	print("Toggled on: ", toggled_on, " Stem ID: ", stem_ID)
 	
-	if toggled_on:
+	if not toggled_on:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(STEMBUS_NAMES[stem_ID]), linear_to_db(0))
+		var stem_height_scales_temp = stem_height_scales.duplicate()
+		stem_height_scales_temp[stem_ID] = 0.0;
+		print("turning off stem ", stem_ID)
+		material.set_shader_parameter("spec_scales", stem_height_scales_temp)
+		
 	else:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(STEMBUS_NAMES[stem_ID]), linear_to_db(stem_val))
+		material.set_shader_parameter("spec_scales", stem_height_scales)
+		print(stem_height_scales)
+		print("toggled on volume")
 
 func _on_ui_canvas_update_stem(new_val:Variant, stem_ID:Variant):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(STEMBUS_NAMES[stem_ID]), linear_to_db(new_val))
+	stem_height_scales[stem_ID] = new_val;
+	material.set_shader_parameter("spec_scales", stem_height_scales)
+	
+	
 
 
 func _on_ui_canvas_toggle_playstop(toggled_on:Variant):
 
 	for asp in audio_stream_players:
 		asp.stream_paused = not toggled_on
+	
+	if toggled_on:
+		material.set_shader_parameter("spec_scales", stem_height_scales)
+	else:
+		var stem_height_scales_off = [0.0, 0.0, 0.0, 0.0, 0.0]
+		material.set_shader_parameter("spec_scales", stem_height_scales_off)
 
 
 	# Get current position of first audio stream player
