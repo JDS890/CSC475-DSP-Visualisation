@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://b4ychygfrwjvs" path="res://Prefabs/stem_control_prefab.tscn" id="3_dgq81"]
 [ext_resource type="PackedScene" uid="uid://b8ctrxdy417uw" path="res://Prefabs/slider_panel_prefab.tscn" id="3_upf01"]
 [ext_resource type="Theme" uid="uid://yem3726wnio6" path="res://Assets/jack_theme.tres" id="5_66uyq"]
-[ext_resource type="Texture2D" uid="uid://cgx6uhkfwlu4n" path="res://Temp Dev Stuff/plan 1.png" id="5_e8ggy"]
-[ext_resource type="Texture2D" uid="uid://brcpvlun430t7" path="res://Temp Dev Stuff/plan 2.png" id="6_v6wlw"]
-[ext_resource type="Texture2D" uid="uid://bgrwi74gin2a5" path="res://Temp Dev Stuff/plan 3.png" id="7_0x6td"]
-[ext_resource type="Texture2D" uid="uid://dyo7qhb75febn" path="res://Temp Dev Stuff/cog_gear_icon_white.png" id="7_c08bh"]
+[ext_resource type="Texture2D" uid="uid://bdoqn3mvbiq55" path="res://Temp Dev Stuff/plan 1.png" id="5_e8ggy"]
+[ext_resource type="Texture2D" uid="uid://cic26e1mkadsa" path="res://Temp Dev Stuff/plan 2.png" id="6_v6wlw"]
+[ext_resource type="Texture2D" uid="uid://ynfp3bm4u5ug" path="res://Temp Dev Stuff/plan 3.png" id="7_0x6td"]
+[ext_resource type="Texture2D" uid="uid://dkkeuuihd02ln" path="res://Temp Dev Stuff/cog_gear_icon_white.png" id="7_c08bh"]
 
 [node name="UICanvas" type="Control"]
 layout_mode = 3
@@ -180,7 +180,7 @@ offset_top = -23.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "[H]ide UI, change [T]rack, change [M]ode"
+text = "[H]ide UI, change [T]rack, change [M]ode, change [C]amera"
 
 [node name="Button" type="Button" parent="HBoxContainer/Middle Spacer"]
 visible = false

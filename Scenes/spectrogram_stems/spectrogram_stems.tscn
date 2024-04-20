@@ -9,21 +9,39 @@
 [node name="Spectrograms" type="Node3D"]
 script = ExtResource("1_ihkls")
 
-[node name="FreeCam" type="Camera3D" parent="."]
-transform = Transform3D(0.356966, 0.625143, -0.694097, 0, 0.743051, 0.669234, 0.934117, -0.238894, 0.265244, 4.18606, 10, 1.93885)
-current = true
-script = ExtResource("2_pih38")
-
 [node name="S1" parent="." instance=ExtResource("3_2mdqd")]
-
-[node name="OrthoCam" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.379, 22.5764, 75.8617)
-projection = 1
-size = 72.833
 
 [node name="UICanvas" parent="." instance=ExtResource("4_dahan")]
 
 [node name="skybox" parent="." instance=ExtResource("5_3kphs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, -400, 0)
+
+[node name="Cameras" type="Node3D" parent="."]
+
+[node name="P_AngleLeft" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.599024, 0.433763, -0.673068, 0, 0.840567, 0.541708, 0.800731, -0.324496, 0.503519, -1.669, 5.855, 1.939)
+script = ExtResource("2_pih38")
+
+[node name="P_AngleRight" type="Camera3D" parent="Cameras"]
+transform = Transform3D(0.667833, -0.415136, 0.617788, 0, 0.830012, 0.557745, -0.744312, -0.37248, 0.554309, 128.655, 5.855, 1.939)
+script = ExtResource("2_pih38")
+
+[node name="P_Front" type="Camera3D" parent="Cameras"]
+transform = Transform3D(1, 0, 0, 0, 0.744312, 0.667833, 0, -0.667833, 0.744312, 64.204, 46.166, 23.332)
+current = true
+size = 150.0
+script = ExtResource("2_pih38")
+
+[node name="O_Front" type="Camera3D" parent="Cameras"]
+transform = Transform3D(1, 0, 0, 0, 0.840567, 0.541708, 0, -0.541708, 0.840567, 63.729, 49.566, 71.457)
+projection = 1
+size = 73.865
+script = ExtResource("2_pih38")
+
+[node name="P_Top" type="Camera3D" parent="Cameras"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 64.064, 48.971, 0)
+size = 150.0
+script = ExtResource("2_pih38")
 
 [connection signal="toggle_playstop" from="UICanvas" to="." method="_on_ui_canvas_toggle_playstop"]
 [connection signal="toggle_stem" from="UICanvas" to="." method="_on_ui_canvas_toggle_stem"]

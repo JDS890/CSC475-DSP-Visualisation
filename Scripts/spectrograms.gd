@@ -99,6 +99,35 @@ func _input(_event):
 		material.set_shader_parameter("mode", spec_mode)
 		print("change_mode pressed!")
 		
+	elif Input.is_action_just_pressed("change_camera"):
+		
+		# Get all children of the $Cameras node
+		var cameras = $Cameras.get_children()
+		print("Cameras: ", cameras)
+
+		# Find the current camera
+		var current_camera = null
+		for camera in cameras:
+			if camera.is_current():
+				current_camera = camera
+				break
+		
+		# Find the next camera
+		var next_camera = null
+		for i in range(cameras.size()):
+			if cameras[i] == current_camera:
+				next_camera = cameras[(i + 1) % cameras.size()]
+				break
+		
+		# Set the next camera as current
+		if next_camera:
+			next_camera.set_current(true)
+			print("Switched to camera: ", next_camera.get_name())
+		else:
+			print("No cameras found!")
+
+
+		
 
 func _process(_delta):
 

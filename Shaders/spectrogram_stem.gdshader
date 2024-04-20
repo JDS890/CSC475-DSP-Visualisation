@@ -128,7 +128,10 @@ void fragment() {
 			//ALBEDO = spec_colors[0].rgb;
 		//}
 	}
+	//if (ALPHA < 0.99) {
 	ALPHA = alpha;
+	//}
+	//RIM = 1.0;
 }
 
 //void light() {

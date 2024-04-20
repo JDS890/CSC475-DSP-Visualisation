@@ -2,6 +2,8 @@ extends Camera3D
 
 @export var camera_target: MeshInstance3D
 
+# test here
+
 # Modifier keys' speed multiplier
 const SHIFT_MULTIPLIER = 2.5
 const ALT_MULTIPLIER = 1.0 / SHIFT_MULTIPLIER
