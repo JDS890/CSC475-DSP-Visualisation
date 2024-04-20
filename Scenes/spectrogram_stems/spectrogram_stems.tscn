@@ -20,28 +20,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, -400, 0)
 
 [node name="P_AngleLeft" type="Camera3D" parent="Cameras"]
 transform = Transform3D(0.599024, 0.433763, -0.673068, 0, 0.840567, 0.541708, 0.800731, -0.324496, 0.503519, -1.669, 5.855, 1.939)
-script = ExtResource("2_pih38")
 
 [node name="P_AngleRight" type="Camera3D" parent="Cameras"]
 transform = Transform3D(0.667833, -0.415136, 0.617788, 0, 0.830012, 0.557745, -0.744312, -0.37248, 0.554309, 128.655, 5.855, 1.939)
-script = ExtResource("2_pih38")
 
 [node name="P_Front" type="Camera3D" parent="Cameras"]
-transform = Transform3D(1, 0, 0, 0, 0.744312, 0.667833, 0, -0.667833, 0.744312, 64.204, 46.166, 23.332)
+transform = Transform3D(1, 0, 0, 0, 0.34366, 0.939094, 0, -0.939094, 0.34366, 64.274, 43.751, 23.437)
 current = true
 size = 150.0
 script = ExtResource("2_pih38")
 
 [node name="O_Front" type="Camera3D" parent="Cameras"]
-transform = Transform3D(1, 0, 0, 0, 0.840567, 0.541708, 0, -0.541708, 0.840567, 63.729, 49.566, 71.457)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.729, 0, 71.457)
 projection = 1
 size = 73.865
-script = ExtResource("2_pih38")
 
-[node name="P_Top" type="Camera3D" parent="Cameras"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 64.064, 48.971, 0)
-size = 150.0
-script = ExtResource("2_pih38")
+[node name="O_Top" type="Camera3D" parent="Cameras"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 64.014, 51.006, 0)
+projection = 1
+size = 73.95
 
 [connection signal="toggle_playstop" from="UICanvas" to="." method="_on_ui_canvas_toggle_playstop"]
 [connection signal="toggle_stem" from="UICanvas" to="." method="_on_ui_canvas_toggle_stem"]

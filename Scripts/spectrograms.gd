@@ -125,8 +125,6 @@ func _input(_event):
 			print("Switched to camera: ", next_camera.get_name())
 		else:
 			print("No cameras found!")
-
-
 		
 
 func _process(_delta):

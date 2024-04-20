@@ -68,9 +68,9 @@ void vertex() {
 		
 		if (bin_index < bins_per_spec) {
 			
-			heights[0] = bins[bin_index_int] * spec_scale;
+			heights[0] = bins[bin_index_int] * spec_scale * spec_scales[0];
 			for (int i = 1; i <= stem_index_int; i++) {
-				heights[i] = heights[i-1] + bins[(i << 8) + bin_index_int] * spec_scale * spec_scales[int(stem_index)];
+				heights[i] = heights[i-1] + bins[(i << 8) + bin_index_int] * spec_scale * spec_scales[i];
 			}
 			
 			float x_offset = VERTEX.x - bin_index - 0.25; // 0.0 or 0.5
@@ -78,7 +78,7 @@ void vertex() {
 			
 			VERTEX = vec3(
 				(0.5 * bin_index + x_offset * bin_width) * (256.0 / bins_per_spec),
-				heights[stem_index_int] * VERTEX.y * spec_scales[int(stem_index)],
+				heights[stem_index_int] * VERTEX.y,
 				//VERTEX.y * spec_scale,
 				-0.5 * spec_separation * stem_index + z_offset
 			);
@@ -96,45 +96,22 @@ void vertex() {
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-	
 	if (mode == 0)
 	{
-		//ALBEDO = COLOR.rgb;
-		//ALBEDO = spec_colors[int(stem_index)].rgb;
-		//ALPHA = spec_colors[int(stem_index)].a;
 		ALBEDO = COLOR.rgb;
-		//ALPHA = COLOR.a;
 	}
 	
 	else
 	{
-		//float height = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).y;
 		for (int i = 0; i <= stem_index_int; i++) {
 			if (height_vary <= heights[i]) {
 				ALBEDO = spec_colors[i].rgb;
 				break;
 			}
 		}
-		//if (height_vary <= )
-		
-		//if (height_vary < heights[0]) {
-			//ALBEDO = vec3(1.0);
-			//
-		//} else {
-			//ALBEDO = vec3(1.0, 0.0, 0.0);
-		//}s
-		
-		//if (VERTEX.y < 2.0) {
-			//ALBEDO = spec_colors[0].rgb;
-		//}
 	}
 	//if (ALPHA < 0.99) {
 	ALPHA = alpha;
 	//}
 	//RIM = 1.0;
 }
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
