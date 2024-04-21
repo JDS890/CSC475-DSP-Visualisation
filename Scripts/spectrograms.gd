@@ -97,7 +97,7 @@ func _input(_event):
 	elif Input.is_action_just_pressed("change_mode"):
 		spec_mode = (spec_mode + 1) % Global.SPECMODES.size()
 		material.set_shader_parameter("mode", spec_mode)
-		print("change_mode pressed!")
+		Global.current_display_mode = spec_mode
 		
 	elif Input.is_action_just_pressed("change_camera"):
 		
@@ -116,8 +116,11 @@ func _input(_event):
 		var next_camera = null
 		for i in range(cameras.size()):
 			if cameras[i] == current_camera:
-				next_camera = cameras[(i + 1) % cameras.size()]
+				var next_i = (i + 1) % cameras.size()
+				next_camera = cameras[next_i]
+				Global.current_camera_mode = next_i
 				break
+			
 		
 		# Set the next camera as current
 		if next_camera:

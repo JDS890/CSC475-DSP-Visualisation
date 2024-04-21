@@ -11,15 +11,21 @@ const PROGRAM_SONGS = [
 ]
 
 const DISPLAY_MODES = [
-	"Individual",
-	"Layered",
+	"Normal Mode",
+	"Layered Mode",
 ]
 
+var current_display_mode = 1
+
 const CAMERA_MODES = [
-	"Free",
-	"Orthographic",
-	"Animated",
+	"Left Angle",
+	"Right Angle",
+	"Free Fly (WASD + RMB)",
+	"Orthographic Front",
+	"Orthographic Top",
 ]
+
+var current_camera_mode = 2
 
 const STEMS = [
 	"Bass",
@@ -28,6 +34,7 @@ const STEMS = [
 	"Piano",
 	"Vocal",
 ]
+
 
 const BUS_NAMES = [
 	&"Bass Bus",

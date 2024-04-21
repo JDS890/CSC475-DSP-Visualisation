@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="ViZley"
+config/name="Stemmy"
 config/description="A 3D spectrogram audio stem visualizer"
 run/main_scene="res://Scenes/spectrogram_stems/spectrogram_stems.tscn"
 config/features=PackedStringArray("4.2")
+run/max_fps=60
 config/icon="res://icon.png"
 
 [autoload]

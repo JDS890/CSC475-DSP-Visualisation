@@ -182,6 +182,38 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "[H]ide UI, change [T]rack, change [M]ode, change [C]amera"
 
+[node name="CameraLabel" type="Label" parent="HBoxContainer/Middle Spacer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -234.0
+offset_top = -586.0
+offset_right = 216.0
+offset_bottom = -563.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Default Camera View"
+horizontal_alignment = 1
+
+[node name="DisplayModeLabel" type="Label" parent="HBoxContainer/Middle Spacer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -234.0
+offset_top = -562.0
+offset_right = 216.0
+offset_bottom = -539.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Default Display Mode"
+horizontal_alignment = 1
+
 [node name="Button" type="Button" parent="HBoxContainer/Middle Spacer"]
 visible = false
 layout_mode = 1

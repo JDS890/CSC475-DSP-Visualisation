@@ -10,6 +10,8 @@ signal track_seek(track_poz)
 @onready var stem_signal_bus = get_node("HBoxContainer/LeftBar")
 @onready var spectro_signal_bus = get_node("HBoxContainer/RightBar")
 @onready var song_label = get_node("HBoxContainer/Middle Spacer/SongLabel")
+@onready var camera_label = get_node("HBoxContainer/Middle Spacer/CameraLabel")
+@onready var display_mode_label = get_node("HBoxContainer/Middle Spacer/DisplayModeLabel")
 @onready var track_bar = get_node("HBoxContainer/Middle Spacer/TrackSlider")
 
 # Called when the node enters the scene tree for the first time.
@@ -29,6 +31,8 @@ func _ready():
 		controller.slider_update.connect(spectro_control_response)
 
 	song_label.text = Global.PROGRAM_SONGS[4]
+	camera_label.text = Global.CAMERA_MODES[Global.current_camera_mode]
+	display_mode_label.text = Global.DISPLAY_MODES[Global.current_display_mode]
 
 # Logic for hiding the UI on button press
 func _input(_event):
@@ -36,9 +40,15 @@ func _input(_event):
 		_hidden_UI = !_hidden_UI
 		self.visible = _hidden_UI
 	elif Input.is_action_just_pressed("change_song"):
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.05).timeout
 		print("Changed song to name", Global.songname)
 		song_label.text = Global.songname
+	elif Input.is_action_just_pressed("change_mode"):
+		await get_tree().create_timer(0.05).timeout
+		display_mode_label.text = Global.DISPLAY_MODES[Global.current_display_mode]
+	elif Input.is_action_just_pressed("change_camera"):
+		await get_tree().create_timer(0.05).timeout
+		camera_label.text = Global.CAMERA_MODES[Global.current_camera_mode]
 
 # These IDs are associated with each slider in the order they
 # 	they appear in the UI.

@@ -109,9 +109,6 @@ void fragment() {
 				break;
 			}
 		}
+		ALPHA = alpha;
 	}
-	//if (ALPHA < 0.99) {
-	ALPHA = alpha;
-	//}
-	//RIM = 1.0;
 }
