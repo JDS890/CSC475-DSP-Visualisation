@@ -10,6 +10,8 @@ const STEMBUS_NAMES = [
 	&"Vocal Bus",
 ]
 
+signal update_track_progress(curr_progress)
+
 var spectrum_analyzers: Array = []
 var spectrums: PackedFloat32Array = PackedFloat32Array()
 var material: Material = null
@@ -62,7 +64,6 @@ func _gather_spectrum_analyzer_instances():
 
 
 func _ready():
-
 	spectrums.resize(BINS_PER_SPEC_MAX * SPEC_MAX)
 	material = get_node("S1").get_child(0).get_surface_override_material(0)
 
@@ -146,7 +147,12 @@ func _process(_delta):
 			freq_prev = freq
 	
 	material.set_shader_parameter("bins", spectrums)
-
+	
+	# To update the audio track bar in real time
+	var curr_audio_poz = audio_stream_players[0].get_playback_position()
+	var length = audio_stream_players[0].stream.get_length()
+	print(curr_audio_poz / length * 100)
+	emit_signal("update_track_progress", (curr_audio_poz / length) * 100)
 
 func _update_scales():
 	var stem_height_scales_temp = stem_height_scales.duplicate()

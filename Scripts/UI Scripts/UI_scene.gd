@@ -13,6 +13,7 @@ signal track_seek(track_poz)
 @onready var camera_label = get_node("HBoxContainer/Middle Spacer/CameraLabel")
 @onready var display_mode_label = get_node("HBoxContainer/Middle Spacer/DisplayModeLabel")
 @onready var track_bar = get_node("HBoxContainer/Middle Spacer/TrackSlider")
+@onready var track_bar_held : bool = false
 
 # Called when the node enters the scene tree for the first time.
 # Loops through the slider prefab children and listens to their signals.
@@ -40,8 +41,9 @@ func _input(_event):
 		_hidden_UI = !_hidden_UI
 		self.visible = _hidden_UI
 	elif Input.is_action_just_pressed("change_song"):
+		track_bar.value = 0
 		await get_tree().create_timer(0.05).timeout
-		print("Changed song to name", Global.songname)
+		#print("Changed song to name", Global.songname)
 		song_label.text = Global.songname
 	elif Input.is_action_just_pressed("change_mode"):
 		await get_tree().create_timer(0.05).timeout
@@ -77,9 +79,24 @@ func _on_check_box_toggled(toggled_on:bool):
 
 # Emits a value from 0 to 100
 func _on_track_slider_drag_ended(value_changed):
+	track_bar_held = false
 	if value_changed:
 		emit_signal("track_seek", track_bar.value)
 
-
+# This was Josh's solution to click seeking rather than drag seeking
+# This signal is sent also when the value is changed by CODE!
+# So I added a lock to avoid the code updates from making things janky
 func _on_track_slider_value_changed(value:float):
-	emit_signal("track_seek", track_bar.value)
+	if track_bar_held == true:
+		emit_signal("track_seek", track_bar.value)
+
+# This one listens to the Spectrograms parent node!
+# It gets info on current progress to update the var
+func _on_spectrograms_update_track_progress(curr_progress):
+	# Don't want to compete against the user
+	if track_bar_held == false:
+		track_bar.value = curr_progress
+
+# Basically locks the _process update signalling from Spectrogram.gd
+func _on_track_slider_drag_started():
+	track_bar_held = true

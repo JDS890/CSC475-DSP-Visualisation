@@ -25,7 +25,6 @@ void vertex() {
 	
 	if (mode == 0)
 	{
-	
 		float bin_index = trunc(VERTEX.x);
 		float stem_index = trunc(-VERTEX.z);
 		
@@ -48,15 +47,13 @@ void vertex() {
 			}
 			else {
 				VERTEX = vec3(0.0);
+				COLOR = spec_colors[int(stem_index)];
 			}
 		}
 		else {
 			VERTEX = vec3(0.0);
 		}
 	}
-
-
-	
 	else
 	{	
 		// Note to self: these aren't interopolated in fragment shader since
@@ -89,9 +86,6 @@ void vertex() {
 		}
 	}
 	height_vary = VERTEX.y;
-
-
-
 }
 
 void fragment() {
@@ -100,7 +94,6 @@ void fragment() {
 	{
 		ALBEDO = COLOR.rgb;
 	}
-	
 	else
 	{
 		for (int i = 0; i <= stem_index_int; i++) {
@@ -109,6 +102,7 @@ void fragment() {
 				break;
 			}
 		}
-		ALPHA = alpha;
 	}
+	
+	ALPHA = alpha;
 }

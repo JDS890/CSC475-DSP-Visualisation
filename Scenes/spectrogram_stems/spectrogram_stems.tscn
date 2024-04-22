@@ -40,6 +40,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 64.014
 projection = 1
 size = 73.95
 
+[connection signal="update_track_progress" from="." to="UICanvas" method="_on_spectrograms_update_track_progress"]
 [connection signal="toggle_playstop" from="UICanvas" to="." method="_on_ui_canvas_toggle_playstop"]
 [connection signal="toggle_stem" from="UICanvas" to="." method="_on_ui_canvas_toggle_stem"]
 [connection signal="track_seek" from="UICanvas" to="." method="_on_ui_canvas_track_seek"]
