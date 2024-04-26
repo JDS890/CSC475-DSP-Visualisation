@@ -151,7 +151,7 @@ func _process(_delta):
 	# To update the audio track bar in real time
 	var curr_audio_poz = audio_stream_players[0].get_playback_position()
 	var length = audio_stream_players[0].stream.get_length()
-	print(curr_audio_poz / length * 100)
+	#print(curr_audio_poz / length * 100)
 	emit_signal("update_track_progress", (curr_audio_poz / length) * 100)
 
 func _update_scales():

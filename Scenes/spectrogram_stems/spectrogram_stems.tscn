@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://w6pp5ut84tvx"]
+[gd_scene load_steps=7 format=3 uid="uid://w6pp5ut84tvx"]
 
 [ext_resource type="Script" path="res://Scripts/spectrograms.gd" id="1_ihkls"]
 [ext_resource type="Script" path="res://Scenes/spectrogram_stems/camera.gd" id="2_pih38"]
 [ext_resource type="PackedScene" uid="uid://cmwx3pasdfry" path="res://Scenes/spectrogram_stems/spectrum_3d.tscn" id="3_2mdqd"]
 [ext_resource type="PackedScene" uid="uid://c4o67e7m3gdh3" path="res://Scenes/UI_scene.tscn" id="4_dahan"]
 [ext_resource type="PackedScene" uid="uid://cmev6gewoioo6" path="res://Scenes/spectrogram_stems/skybox.tscn" id="5_3kphs"]
+[ext_resource type="Script" path="res://Scripts/UI Scripts/Stem Label Group.gd" id="6_m4dtt"]
 
 [node name="Spectrograms" type="Node3D"]
 script = ExtResource("1_ihkls")
@@ -40,9 +41,43 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 64.014
 projection = 1
 size = 73.95
 
+[node name="Stem Label Group" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.25, 0, -0.25)
+script = ExtResource("6_m4dtt")
+
+[node name="Vocal" type="Label3D" parent="Stem Label Group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+text = "Vocal"
+font_size = 128
+horizontal_alignment = 2
+
+[node name="Piano" type="Label3D" parent="Stem Label Group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 1.59872e-14)
+text = "Piano"
+font_size = 128
+horizontal_alignment = 2
+
+[node name="Other" type="Label3D" parent="Stem Label Group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -1.24345e-14)
+text = "Other"
+font_size = 128
+horizontal_alignment = 2
+
+[node name="Drum" type="Label3D" parent="Stem Label Group"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 1.77636e-15)
+text = "Drum"
+font_size = 128
+horizontal_alignment = 2
+
+[node name="Base" type="Label3D" parent="Stem Label Group"]
+text = "Base"
+font_size = 128
+horizontal_alignment = 2
+
 [connection signal="update_track_progress" from="." to="UICanvas" method="_on_spectrograms_update_track_progress"]
 [connection signal="toggle_playstop" from="UICanvas" to="." method="_on_ui_canvas_toggle_playstop"]
 [connection signal="toggle_stem" from="UICanvas" to="." method="_on_ui_canvas_toggle_stem"]
 [connection signal="track_seek" from="UICanvas" to="." method="_on_ui_canvas_track_seek"]
 [connection signal="update_spectrogram" from="UICanvas" to="." method="_on_ui_canvas_update_spectrogram"]
+[connection signal="update_spectrogram" from="UICanvas" to="Stem Label Group" method="_on_ui_canvas_update_spectrogram"]
 [connection signal="update_stem" from="UICanvas" to="." method="_on_ui_canvas_update_stem"]
